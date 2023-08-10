@@ -3,6 +3,8 @@
 Discretization
 ==============
 
+The following inputs must be preceded by "mfix."
+
 +---------------------------------+-----------------------------------------------------------------------+-------------+--------------+
 | Key                             | Description                                                           |   Type      | Default      |
 +=================================+=======================================================================+=============+==============+
@@ -18,6 +20,9 @@ Discretization
 | use_drag_coeff_in_proj_gp       | Algebraically consistent p coeff in proj or (default) simplified form |   Bool      |  False       |
 +---------------------------------+-----------------------------------------------------------------------+-------------+--------------+
 | use_drag_in_godunov             | Include a drag term in the Godunov flux or (default) not              |   Bool      |  False       |
++---------------------------------+-----------------------------------------------------------------------+-------------+--------------+
+| correction_small_volfrac        | Threshold volume fraction for correcting small cell velocity          |             |              |
+|                                 | at the end of the predictor and corrector                             |   Real      |  1.e-4       |
 +---------------------------------+-----------------------------------------------------------------------+-------------+--------------+
 
 Notes: The code was originally developed with MOL and FluxRedist. Preliminary 
