@@ -155,7 +155,7 @@ The following inputs must be preceded by the "species." prefix
 |                                           |                                                       |          |           |
 |                                           | * 'constant' for constant diffusivity model           |          |           |
 +-------------------------------------------+-------------------------------------------------------+----------+-----------+
-| diffusivity.constant                      | Value of constant species diffusivity. [required if   |  Real    |  None     |
+| diffusivity.constant                      | Value of constant species diffusivity. [required if   |  Real    |  0        |
 |                                           | diffusivity_model='constant'].                        |          |           |
 +-------------------------------------------+-------------------------------------------------------+----------+-----------+
 | specific_heat                             | Specify which specific heat model to use for species  | String   |  None     |
@@ -165,14 +165,14 @@ The following inputs must be preceded by the "species." prefix
 |                                           | * 'constant' for constant specific heat model         |          |           |
 |                                           | * 'nasa7-poly' for NASA7 Polynomials model            |          |           |
 +-------------------------------------------+-------------------------------------------------------+----------+-----------+
-| [specie0].specific_heat.constant          | Value of constant species diffusivity. [required if   |  Real    |  None     |
+| [specie0].specific_heat.constant          | Value of constant species diffusivity. [required if   |  Real    |  0        |
 |                                           | diffusivity model='constant'].                        |          |           |
 +-------------------------------------------+-------------------------------------------------------+----------+-----------+
-| [specie0].specific_heat.NASA7.a[i]        | Value of i-th coefficient, with i=0,..,6 for NASA7    |  Real    |  None     |
+| [specie0].specific_heat.NASA7.a[i]        | Value of i-th coefficient, with i=0,..,6 for NASA7    |  Real    |  0        |
 |                                           | polynomial coefficient [required if specific heat     |          |           |
 |                                           | model='NASA7-Poly'].                                  |          |           |
 +-------------------------------------------+-------------------------------------------------------+----------+-----------+
-| [specie0].enthalpy_of_formation           | Value of constant enthalpy of formation. [required if |  Real    |  None     |
+| [specie0].enthalpy_of_formation           | Value of constant enthalpy of formation. [required if |  Real    |  0        |
 |                                           | specific heat model='constant'].                      |          |           |
 +-------------------------------------------+-------------------------------------------------------+----------+-----------+
 
@@ -253,7 +253,7 @@ The following inputs must be preceded by the given to the fluid solver e.g., "fl
 |                                          |                                                          |        |          |
 |                                          | * 'constant' for constant viscosity model                |        |          |
 +------------------------------------------+----------------------------------------------------------+--------+----------+
-| viscosity.constant                       | Value of constant fluid viscosity [required if           |  Real  |  None    |
+| viscosity.constant                       | Value of constant fluid viscosity [required if           |  Real  |  0       |
 |                                          | viscosity_model='constant'].                             |        |          |
 +------------------------------------------+----------------------------------------------------------+--------+----------+
 | specific_heat                            | Specify which specific heat model to use for fluid       | String |  None    |
@@ -263,7 +263,7 @@ The following inputs must be preceded by the given to the fluid solver e.g., "fl
 |                                          | * 'constant' for constant specific heat model            |        |          |
 |                                          | * 'mixture' required when fluid is a mixture of species  |        |          |
 +------------------------------------------+----------------------------------------------------------+--------+----------+
-| specific_heat.constant                   | Value of constant fluid specific heat [required if       |  Real  |  None    |
+| specific_heat.constant                   | Value of constant fluid specific heat [required if       |  Real  |  0       |
 |                                          | specific_heat_model='constant'].                         |        |          |
 +------------------------------------------+----------------------------------------------------------+--------+----------+
 | thermal_conductivity                     | Specify which thermal conductivity model to use for      | String |  None    |
@@ -272,7 +272,7 @@ The following inputs must be preceded by the given to the fluid solver e.g., "fl
 |                                          |                                                          |        |          |
 |                                          | * 'constant' for constant thermal conductivity model     |        |          |
 +------------------------------------------+----------------------------------------------------------+--------+----------+
-| thermal_conductivity.constant            | Value of constant fluid thermal conductivity [required   |  Real  |  None    |
+| thermal_conductivity.constant            | Value of constant fluid thermal conductivity [required   |  Real  |  0       |
 |                                          | if thermal_conductivity_model='constant'].               |        |          |
 +------------------------------------------+----------------------------------------------------------+--------+----------+
 | thermodynamic_pressure                   | Value of the thermodynamic pressure [required if the     |  Real  |  0       |
@@ -409,24 +409,24 @@ Enabling the DEM solver and specifying model options.
 | dem.solve               | Specified name(s) of the DEM types or None to disable the DEM solver.   | String   |  None     |
 |                         | The user defined names are used to specify DEM model inputs.            |          |           |
 +-------------------------+-------------------------------------------------------------------------+----------+-----------+
-| dem.friction_coeff.pp   | Friction coefficient :: particle to particle collisions [required]      | Real     |  None     |
+| dem.friction_coeff.pp   | Friction coefficient :: particle to particle collisions [required]      | Real     |  0        |
 +-------------------------+-------------------------------------------------------------------------+----------+-----------+
-| dem.friction_coeff.pw   | Friction coefficient :: particle to wall collisions [required]          | Real     |  None     |
+| dem.friction_coeff.pw   | Friction coefficient :: particle to wall collisions [required]          | Real     |  0        |
 +-------------------------+-------------------------------------------------------------------------+----------+-----------+
-| dem.spring_const.pp     | Normal spring constant :: particle to particle collisions [required]    | Real     |  None     |
+| dem.spring_const.pp     | Normal spring constant :: particle to particle collisions [required]    | Real     |  0        |
 +-------------------------+-------------------------------------------------------------------------+----------+-----------+
-| dem.spring_const.pw     | Normal spring constant :: particle to wall collisions [required]        | Real     |  None     |
+| dem.spring_const.pw     | Normal spring constant :: particle to wall collisions [required]        | Real     |  0        |
 +-------------------------+-------------------------------------------------------------------------+----------+-----------+
-| dem.spring_tang_fac.pp  | Tangential-to-normal spring constant factor :: particle to particle     | Real     |  None     |
+| dem.spring_tang_fac.pp  | Tangential-to-normal spring constant factor :: particle to particle     | Real     |  0        |
 |                         | collisions [required]                                                   |          |           |
 +-------------------------+-------------------------------------------------------------------------+----------+-----------+
-| dem.spring_tang_fac.pw  | Tangential-to-normal spring constant factor :: particle to wall         | Real     |  None     |
+| dem.spring_tang_fac.pw  | Tangential-to-normal spring constant factor :: particle to wall         | Real     |  0        |
 |                         | collisions [required]                                                   |          |           |
 +-------------------------+-------------------------------------------------------------------------+----------+-----------+
-| dem.damping_tang_fac.pp | Factor relating the tangential damping coefficient to the normal        | Real     |  None     |
+| dem.damping_tang_fac.pp | Factor relating the tangential damping coefficient to the normal        | Real     |  0        |
 |                         | damping coefficient :: particle to particle collisions [required]       |          |           |
 +-------------------------+-------------------------------------------------------------------------+----------+-----------+
-| dem.damping_tang_fac.pw | Factor relating the tangential damping coefficient to the normal        | Real     |  None     |
+| dem.damping_tang_fac.pw | Factor relating the tangential damping coefficient to the normal        | Real     |  0        |
 |                         | damping coefficient :: particle to wall collisions [required]           |          |           |
 +-------------------------+-------------------------------------------------------------------------+----------+-----------+
 
@@ -436,10 +436,10 @@ are proceeded with `dem.restitution_coeff`. These must be defined for all solid-
 +-------------------------+-------------------------------------------------------------------------+----------+-----------+
 |                         | Description                                                             |   Type   | Default   |
 +=========================+=========================================================================+==========+===========+
-| [solid0].[solid1]       | Specifies the restitution coefficient between solid0 and solid1. Here   | Real     |  None     |
+| [solid0].[solid1]       | Specifies the restitution coefficient between solid0 and solid1. Here   | Real     |  0        |
 |                         | the order is not important and could be defined as [solid1].[solid0]    |          |           |
 +-------------------------+-------------------------------------------------------------------------+----------+-----------+
-| [solid0].wall           | Specifies the restitution coefficient between solid0 and the wall.      | Real     |  None     |
+| [solid0].wall           | Specifies the restitution coefficient between solid0 and the wall.      | Real     |  0        |
 |                         | Order is not important and this could be defined as wall.[solid0]       |          |           |
 +-------------------------+-------------------------------------------------------------------------+----------+-----------+
 
@@ -479,9 +479,9 @@ Regions are used to define sections of the domain. They may be either boxes, pla
 +=====================+=======================================================================+=============+===========+
 | mfix.regions        | Names given to regions.                                               | String      | None      |
 +---------------------+-----------------------------------------------------------------------+-------------+-----------+
-| regions.[region].lo | Low corner of physical region (physical, not index space)             |   Reals     | None      |
+| regions.[region].lo | Low corner of physical region (physical, not index space)             |   Reals     | 0         |
 +---------------------+-----------------------------------------------------------------------+-------------+-----------+
-| regions.[region].hi | High corner of physical region (physical, not index space)            |   Reals     | None      |
+| regions.[region].hi | High corner of physical region (physical, not index space)            |   Reals     | 0         |
 +---------------------+-----------------------------------------------------------------------+-------------+-----------+
 
 Below is an example for specifying two regions.
@@ -527,15 +527,15 @@ For a fluid phase, the following inputs can be defined.
 +------------------------+------------------------------------------------------------------------+-------------+-----------+
 |                        | Description                                                            |   Type      | Default   |
 +========================+========================================================================+=============+===========+
-| volfrac                | Volume fraction [required]                                             | Real        | None      |
+| volfrac                | Volume fraction [required]                                             | Real        | 0         |
 +------------------------+------------------------------------------------------------------------+-------------+-----------+
-| density                | Fluid density                                                          | Real        | None      |
+| density                | Fluid density                                                          | Real        | 0         |
 +------------------------+------------------------------------------------------------------------+-------------+-----------+
-| temperature            | Fluid temperature                                                      | Real        | None      |
+| temperature            | Fluid temperature                                                      | Real        | 0         |
 +------------------------+------------------------------------------------------------------------+-------------+-----------+
-| velocity               | Velocity components                                                    | Reals       | None      |
+| velocity               | Velocity components                                                    | Reals       | 0         |
 +------------------------+------------------------------------------------------------------------+-------------+-----------+
-| species.[species0]     | Species 'species0' mass fraction                                       | Reals       | None      |
+| species.[species0]     | Species 'species0' mass fraction                                       | Reals       | 0         |
 +------------------------+------------------------------------------------------------------------+-------------+-----------+
 
 
@@ -566,13 +566,13 @@ For each solid, the following inputs may be defined.
 +---------------------+-----------------------------------------------------------------------+-------------+-----------+
 |                     | Description                                                           |   Type      | Default   |
 +=====================+=======================================================================+=============+===========+
-| volfrac             | Volume fraction                                                       | Real        | None      |
+| volfrac             | Volume fraction                                                       | Real        | 0         |
 +---------------------+-----------------------------------------------------------------------+-------------+-----------+
-| temperature         | Fluid temperature                                                     | Real        | None      |
+| temperature         | Fluid temperature                                                     | Real        | 0         |
 +---------------------+-----------------------------------------------------------------------+-------------+-----------+
-| species.[species0]  | Species 'species0' mass fraction                                      | Real        | None      |
+| species.[species0]  | Species 'species0' mass fraction                                      | Real        | 0         |
 +---------------------+-----------------------------------------------------------------------+-------------+-----------+
-| velocity            | Velocity components                                                   | Reals       | None      |
+| velocity            | Velocity components                                                   | Reals       | 0         |
 +---------------------+-----------------------------------------------------------------------+-------------+-----------+
 | diameter            | Method to specify particle diameter in the IC region. This is         | String      | None      |
 |                     | only used for auto-generated particles. Available options include:    |             |           |
@@ -581,15 +581,15 @@ For each solid, the following inputs may be defined.
 |                     | * 'uniform'   -- uniform distribution                                 |             |           |
 |                     | * 'normal'    -- normal distribution                                  |             |           |
 +---------------------+-----------------------------------------------------------------------+-------------+-----------+
-| diameter.constant   | Value of specified constant particle density                          | Real        | None      |
+| diameter.constant   | Value of specified constant particle density                          | Real        | 0         |
 +---------------------+-----------------------------------------------------------------------+-------------+-----------+
-| diameter.mean       | Distribution mean                                                     | Real        | None      |
+| diameter.mean       | Distribution mean                                                     | Real        | 0         |
 +---------------------+-----------------------------------------------------------------------+-------------+-----------+
-| diameter.std        | Distribution standard deviation                                       | Real        | None      |
+| diameter.std        | Distribution standard deviation                                       | Real        | 0         |
 +---------------------+-----------------------------------------------------------------------+-------------+-----------+
-| diameter.min        | Minimum diameter to clip distribution                                 | Real        | None      |
+| diameter.min        | Minimum diameter to clip distribution                                 | Real        | 0         |
 +---------------------+-----------------------------------------------------------------------+-------------+-----------+
-| diameter.max        | Maximum diameter to clip distribution                                 | Real        | None      |
+| diameter.max        | Maximum diameter to clip distribution                                 | Real        | 0         |
 +---------------------+-----------------------------------------------------------------------+-------------+-----------+
 | density             | Method to specify particle density in the IC region. This is          | String      | None      |
 |                     | only used for auto-generated particles. Available options include:    |             |           |
@@ -598,15 +598,15 @@ For each solid, the following inputs may be defined.
 |                     | * 'uniform'   -- uniform distribution                                 |             |           |
 |                     | * 'normal'    -- normal distribution                                  |             |           |
 +---------------------+-----------------------------------------------------------------------+-------------+-----------+
-| density.constant    | Value of specified constant particle density                          | Real        | None      |
+| density.constant    | Value of specified constant particle density                          | Real        | 0         |
 +---------------------+-----------------------------------------------------------------------+-------------+-----------+
-| density.mean        | Distribution mean                                                     | Real        | None      |
+| density.mean        | Distribution mean                                                     | Real        | 0         |
 +---------------------+-----------------------------------------------------------------------+-------------+-----------+
-| density.std         | Distribution standard deviation                                       | Real        | None      |
+| density.std         | Distribution standard deviation                                       | Real        | 0         |
 +---------------------+-----------------------------------------------------------------------+-------------+-----------+
-| density.min         | Minimum density to clip distribution                                  | Real        | None      |
+| density.min         | Minimum density to clip distribution                                  | Real        | 0         |
 +---------------------+-----------------------------------------------------------------------+-------------+-----------+
-| density.max         | Maximum density to clip distribution                                  | Real        | None      |
+| density.max         | Maximum density to clip distribution                                  | Real        | 0         |
 +---------------------+-----------------------------------------------------------------------+-------------+-----------+
 
 
@@ -699,22 +699,22 @@ For a fluid phase, the following inputs can be defined.
 +------------------------+------------------------------------------------------------------------+-------------+-----------+
 |                        | Description                                                            |   Type      | Default   |
 +========================+========================================================================+=============+===========+
-| volfrac                | Volume fraction [required if bc_region_type='mi']                      | Real        | None      |
+| volfrac                | Volume fraction [required if bc_region_type='mi']                      | Real        | 0         |
 +------------------------+------------------------------------------------------------------------+-------------+-----------+
-| density                | Fluid density [required if bc_region_type='mi' or 'pi']                | Real        | None      |
+| density                | Fluid density [required if bc_region_type='mi' or 'pi']                | Real        | 0         |
 +------------------------+------------------------------------------------------------------------+-------------+-----------+
-| pressure               | Fluid pressure [required if bc_region_type='po' or 'pi']               | Real        | None      |
+| pressure               | Fluid pressure [required if bc_region_type='po' or 'pi']               | Real        | 0         |
 +------------------------+------------------------------------------------------------------------+-------------+-----------+
 | temperature            | Fluid temperature [required if bc_region_type='mi' or 'pi']            | Real        | 0.0       |
 +------------------------+------------------------------------------------------------------------+-------------+-----------+
-| velocity               | Velocity components [required if bc_region_type='mi']                  | Reals       | None      |
+| velocity               | Velocity components [required if bc_region_type='mi']                  | Reals       | 0         |
 +------------------------+------------------------------------------------------------------------+-------------+-----------+
 | delp_dir               | Direction for specified pressure drop. Note that this direction        | Int         | 0         |
 |                        | should also be periodic.                                               |             |           |
 +------------------------+------------------------------------------------------------------------+-------------+-----------+
 | delp                   | Pressure drop (Pa)                                                     | Real        | 0.0       |
 +------------------------+------------------------------------------------------------------------+-------------+-----------+
-| species.[species0]     | Species 'species0' mass fraction [required if solve_species=1          | Real        | None      |
+| species.[species0]     | Species 'species0' mass fraction [required if solve_species=1          | Real        | 0         |
 |                        | and bc_region_type='mi' or 'pi'].                                      |             |           |
 +------------------------+------------------------------------------------------------------------+-------------+-----------+
 
@@ -808,22 +808,22 @@ provided when appropriate.
 +---------------------+-----------------------------------------------------------------------+-------------+-----------+
 |                     | Description                                                           |   Type      | Default   |
 +=====================+=======================================================================+=============+===========+
-| fluid.velocity      | (Required if not `volflow`) Inflow fluid velocity on EB faces         | Reals       | None      |
+| fluid.velocity      | (Required if not `volflow`) Inflow fluid velocity on EB faces         | Reals       | 0         |
 |                     | contained in the (tridimensional) region.                             |             |           |
 |                     | Note that if only one value is specified, that is assumed to          |             |           |
 |                     | be the magnitude in the direction of the EB face's normal.            |             |           |
 +---------------------+-----------------------------------------------------------------------+-------------+-----------+
-| fluid.volflow       | (Required if not `velocity`) Inflow BC for fluid volumetric flow      | Real        | None      |
+| fluid.volflow       | (Required if not `velocity`) Inflow BC for fluid volumetric flow      | Real        | 0         |
 |                     | rate in the (tridimensional) region. The flow is assumed to be        |             |           |
 |                     | normal to the EB surface in the region.                               |             |           |
 +---------------------+-----------------------------------------------------------------------+-------------+-----------+
-| fluid.volfrac       | (Required) Volume fraction.                                           | Real        | None      |
+| fluid.volfrac       | (Required) Volume fraction.                                           | Real        | 0         |
 +---------------------+-----------------------------------------------------------------------+-------------+-----------+
-| eb.normal           | (Optional) When specified, only cells with EB face normal that is     | Reals       | None      |
+| eb.normal           | (Optional) When specified, only cells with EB face normal that is     | Reals       | 0         |
 |                     | parallel and opposite in direction to the specified values            |             |           |
 |                     | are imposed with the inflow velocity.                                 |             |           |
 +---------------------+-----------------------------------------------------------------------+-------------+-----------+
-| eb.normal_tol       | (Optional) Used in conjunction with `eb.normal`. It determines the    | Real        | None      |
+| eb.normal_tol       | (Optional) Used in conjunction with `eb.normal`. It determines the    | Real        | 0         |
 |                     | tolerance (in degrees) for choosing cells with a specific normal.     |             |           |
 +---------------------+-----------------------------------------------------------------------+-------------+-----------+
 
