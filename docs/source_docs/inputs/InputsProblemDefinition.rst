@@ -67,9 +67,9 @@ file.
 +-------------------+---------------------------------------------------------------------+-------------+-----------+
 |                   | Description                                                         |   Type      | Default   |
 +===================+=====================================================================+=============+===========+
-| n_cell            | Number of cells at level 0 in each coordinate direction             |    Ints     | None      |
+| n_cell            | Number of cells at level 0 in each coordinate direction             |    Ints     | 0 0 0     |
 +-------------------+---------------------------------------------------------------------+-------------+-----------+
-| max_level         | Maximum level of refinement allowed (0 when single-level)           |    Int      | None      |
+| max_level         | Maximum level of refinement allowed (0 when single-level)           |    Int      | 0         |
 +-------------------+---------------------------------------------------------------------+-------------+-----------+
 
 
@@ -86,9 +86,9 @@ The following inputs must be preceded by "geometry."
 +-----------------+-----------------------------------------------------------------------+-------------+-----------+
 | is_periodic     | 1 for true, 0 for false (one value for each coordinate direction)     |   Ints      | 0 0 0     |
 +-----------------+-----------------------------------------------------------------------+-------------+-----------+
-| prob_lo         | Low corner of physical domain (physical not index space)              |   Reals     | None      |
+| prob_lo         | Low corner of physical domain (physical not index space)              |   Reals     | 0 0 0     |
 +-----------------+-----------------------------------------------------------------------+-------------+-----------+
-| prob_hi         | High corner of physical domain (physical not index space)             |   Reals     | None      |
+| prob_hi         | High corner of physical domain (physical not index space)             |   Reals     | 0 0 0     |
 +-----------------+-----------------------------------------------------------------------+-------------+-----------+
 
 
@@ -479,9 +479,9 @@ Regions are used to define sections of the domain. They may be either boxes, pla
 +=====================+=======================================================================+=============+===========+
 | mfix.regions        | Names given to regions.                                               | String      | None      |
 +---------------------+-----------------------------------------------------------------------+-------------+-----------+
-| regions.[region].lo | Low corner of physical region (physical, not index space)             |   Reals     | 0         |
+| regions.[region].lo | Low corner of physical region (physical, not index space)             |   Reals     | 0 0 0     |
 +---------------------+-----------------------------------------------------------------------+-------------+-----------+
-| regions.[region].hi | High corner of physical region (physical, not index space)            |   Reals     | 0         |
+| regions.[region].hi | High corner of physical region (physical, not index space)            |   Reals     | 0 0 0     |
 +---------------------+-----------------------------------------------------------------------+-------------+-----------+
 
 Below is an example for specifying two regions.
@@ -533,9 +533,9 @@ For a fluid phase, the following inputs can be defined.
 +------------------------+------------------------------------------------------------------------+-------------+-----------+
 | temperature            | Fluid temperature                                                      | Real        | 0         |
 +------------------------+------------------------------------------------------------------------+-------------+-----------+
-| velocity               | Velocity components                                                    | Reals       | 0         |
+| velocity               | Velocity components                                                    | Reals       | 0 0 0     |
 +------------------------+------------------------------------------------------------------------+-------------+-----------+
-| species.[species0]     | Species 'species0' mass fraction                                       | Reals       | 0         |
+| species.[species0]     | Species 'species0' mass fraction                                       | Reals       | 0 0 0     |
 +------------------------+------------------------------------------------------------------------+-------------+-----------+
 
 
@@ -572,7 +572,7 @@ For each solid, the following inputs may be defined.
 +---------------------+-----------------------------------------------------------------------+-------------+-----------+
 | species.[species0]  | Species 'species0' mass fraction                                      | Real        | 0         |
 +---------------------+-----------------------------------------------------------------------+-------------+-----------+
-| velocity            | Velocity components                                                   | Reals       | 0         |
+| velocity            | Velocity components                                                   | Reals       | 0 0 0     |
 +---------------------+-----------------------------------------------------------------------+-------------+-----------+
 | diameter            | Method to specify particle diameter in the IC region. This is         | String      | None      |
 |                     | only used for auto-generated particles. Available options include:    |             |           |
@@ -705,14 +705,14 @@ For a fluid phase, the following inputs can be defined.
 +------------------------+------------------------------------------------------------------------+-------------+-----------+
 | pressure               | Fluid pressure [required if bc_region_type='po' or 'pi']               | Real        | 0         |
 +------------------------+------------------------------------------------------------------------+-------------+-----------+
-| temperature            | Fluid temperature [required if bc_region_type='mi' or 'pi']            | Real        | 0.0       |
+| temperature            | Fluid temperature [required if bc_region_type='mi' or 'pi']            | Real        | 0         |
 +------------------------+------------------------------------------------------------------------+-------------+-----------+
-| velocity               | Velocity components [required if bc_region_type='mi']                  | Reals       | 0         |
+| velocity               | Velocity components [required if bc_region_type='mi']                  | Reals       | 0 0 0     |
 +------------------------+------------------------------------------------------------------------+-------------+-----------+
 | delp_dir               | Direction for specified pressure drop. Note that this direction        | Int         | 0         |
 |                        | should also be periodic.                                               |             |           |
 +------------------------+------------------------------------------------------------------------+-------------+-----------+
-| delp                   | Pressure drop (Pa)                                                     | Real        | 0.0       |
+| delp                   | Pressure drop (Pa)                                                     | Real        | 0         |
 +------------------------+------------------------------------------------------------------------+-------------+-----------+
 | species.[species0]     | Species 'species0' mass fraction [required if solve_species=1          | Real        | 0         |
 |                        | and bc_region_type='mi' or 'pi'].                                      |             |           |
@@ -808,7 +808,7 @@ provided when appropriate.
 +---------------------+-----------------------------------------------------------------------+-------------+-----------+
 |                     | Description                                                           |   Type      | Default   |
 +=====================+=======================================================================+=============+===========+
-| fluid.velocity      | (Required if not `volflow`) Inflow fluid velocity on EB faces         | Reals       | 0         |
+| fluid.velocity      | (Required if not `volflow`) Inflow fluid velocity on EB faces         | Reals       | 0 0 0     |
 |                     | contained in the (tridimensional) region.                             |             |           |
 |                     | Note that if only one value is specified, that is assumed to          |             |           |
 |                     | be the magnitude in the direction of the EB face's normal.            |             |           |
@@ -819,7 +819,7 @@ provided when appropriate.
 +---------------------+-----------------------------------------------------------------------+-------------+-----------+
 | fluid.volfrac       | (Required) Volume fraction.                                           | Real        | 0         |
 +---------------------+-----------------------------------------------------------------------+-------------+-----------+
-| eb.normal           | (Optional) When specified, only cells with EB face normal that is     | Reals       | 0         |
+| eb.normal           | (Optional) When specified, only cells with EB face normal that is     | Reals       | 0 0 0     |
 |                     | parallel and opposite in direction to the specified values            |             |           |
 |                     | are imposed with the inflow velocity.                                 |             |           |
 +---------------------+-----------------------------------------------------------------------+-------------+-----------+
