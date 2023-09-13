@@ -13,9 +13,9 @@ Constructing Embedded Boundaries in MFIX-Exa
 
 MFIX-Exa uses AMReX's constructive solid geometry framework defined in the namespace
 :cpp:`amrex::EB2`. See the `AMReX EB documentation`_ for more details. These are
-defined in ``src/eb/mfix_eb.cpp``. A the function :cpp:`mfix::make_eb_geometry`
-(also defined in ``src/eb/mfix_eb.cpp``) selects :cpp:one of the following
-geometries depending on the value of the :cpp:``mfix.geometry`` setting in the
+defined in ``src/eb/mfix_eb.cpp``. The function :cpp:`mfix::make_eb_geometry`
+(also defined in ``src/eb/mfix_eb.cpp``) selects one of the following
+geometries depending on the value of the :cpp:`mfix.geometry` setting in the
 ``inputs`` file.
 
 +------------------------------+----------------------+-------------------------+
@@ -60,8 +60,8 @@ geometries depending on the value of the :cpp:``mfix.geometry`` setting in the
    | ``clr_riser``               | ``mfix.clr_riser = true``     |
    +-----------------------------+-------------------------------+
 
-2. These geometries where not ported from AMReX's old :cpp:``EB`` system to the
-   new :cpp:``EB2``.
+2. These geometries are not ported from AMReX's old :cpp:`EB` system to the
+   new :cpp:`EB2`.
 
 Also note that planar boundary conditions can be specified in the ``mfix.dat``
 file. Even if the user does not specify an ``mfix.geometry`` in the ``inputs``,
