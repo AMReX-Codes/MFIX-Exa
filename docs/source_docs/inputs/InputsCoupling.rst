@@ -129,7 +129,7 @@ The following inputs must be preceded by "mfix."
 | drag_type         | Which drag model to use                                               | String      | None      |
 +-------------------+-----------------------------------------------------------------------+-------------+-----------+
 
-The options currently supported in mfix are :c++:`WenYu`, :c++:`Gidaspow`, :c++:`BVK2`, or :c++:`UserDrag`.
+The options currently supported in mfix are :cpp:`WenYu`, :cpp:`Gidaspow`, :cpp:`BVK2`, or :cpp:`UserDrag`.
 
 If one of these is not specified, the code will abort with
 
@@ -143,7 +143,7 @@ The drag models are defined in src/src_des/des_drag_K.H
 
 If the user wishes to use their own drag model, they must
 
-  * specify :c++:`mfix.drag_type = UserDrag` in the inputs file
+  * specify :cpp:`mfix.drag_type = UserDrag` in the inputs file
 
   * provide the code in the ComputeDragUser routine in a local usr_drag.cpp file.
     An example can be found in tests/DEM06-x.
@@ -262,7 +262,7 @@ The following inputs must be preceded by "mfix."
 | convection_type   | Which HTC model to use          | String      | RanzMarshall |
 +-------------------+---------------------------------+-------------+--------------+
 
-The options currently supported in mfix are :c++:`RanzMarshall` (default) and :c++:`Gunn`. 
+The options currently supported in mfix are :cpp:`RanzMarshall` (default) and :cpp:`Gunn`.
 In both models the HTC is determined from a Nusslet number corelation. 
 
 The RanzMarshall Nusselt number correlation is defined as: 
