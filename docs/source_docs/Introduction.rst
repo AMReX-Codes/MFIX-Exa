@@ -24,7 +24,7 @@ time discretizations differ.  Specifically,
 -  Plotfile format supported by AmrVis, VisIt, ParaView, and yt.
 
 MFIX-Exa is being developed at NETL and LBNL as part of the U.S. Department of
-Energy's `Exascale Computing Project (ECP) <https://www.exascaleproject.org/>`_
+Energy's `Exascale Computing Project (ECP) <https://www.exascaleproject.org/>`_.
 MFIX-Exa heavily leverages `AMReX`_ which is also supported by ECP as part of
 the AMReX Co-Design Center.
 

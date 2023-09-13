@@ -10,7 +10,7 @@ The following inputs must be preceded by "mfix."
 |                            | Description                                       |   Type | Default     |
 +============================+===================================================+========+=============+
 | deposition_scheme          | The algorithm that will be used to deposit        | String | 'trilinear' |
-|                            | particles quantities to the Eulerian grid         |        |             |
+|                            | particles quantities to the Eulerian grid.        |        |             |
 |                            | Available methods are:                            |        |             |
 |                            |                                                   |        |             |
 |                            | * 'centroid'                                      |        |             |
@@ -170,7 +170,7 @@ With the variables defined as follows:
      *    pid     - particle id number
      */
 
-The WenYu model is defined as
+The :cpp:`WenYu` model is defined as
 
    .. code:: shell
 
@@ -188,7 +188,7 @@ The WenYu model is defined as
      if (RE < DEMParams::eps) return 0.0;
      return 0.75 * C_d * vrel * ROPg * std::pow(EPg, -2.65) / DPM;
 
-The Gidaspow model is defined as
+The :cpp:`Gidaspow` model is defined as
 
    .. code:: shell
 
@@ -218,7 +218,7 @@ The Gidaspow model is defined as
       if (RE < DEMParams::eps) return 0.0;
       return (1.0 - PHI_gs)*Ergun + PHI_gs*WenYu;
 
-The Gidaspow model is defined as
+The :cpp:`BVK2` model is defined as
 
    .. code:: shell
 
