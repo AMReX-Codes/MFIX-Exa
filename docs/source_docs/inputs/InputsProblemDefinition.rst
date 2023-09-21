@@ -851,3 +851,43 @@ Below is an example where only specific cells are imposed a velocity in the x-di
 
    bc.eb-flow.my_fluid.volfrac  = 1.0
    bc.eb-flow.my_fluid.velocity = 0.1  0.0  0.0
+
+
+Constraints 
+-----------
+
+Additional constraints may be imposed on problems which are under-determined by IBCs, 
+typically occurring in periodic domains. Currently, only particle constraints are supported. 
+The prefix `particles.` should be applied to all input keywords listed below. 
+
++---------------------+-----------------------------------------------------------------------+-------------+-----------+
+|                     | Description                                                           |   Type      | Default   |
++=====================+=======================================================================+=============+===========+
+| constraint          | Constraint type. Available options include:                           | String      | None      |
+|                     |                                                                       |             |           |
+|                     | * 'mean_velocity'                                                     |             |           |
+|                     |                                                                       |             |           |
++---------------------+-----------------------------------------------------------------------+-------------+-----------+
+
+For the `mean_velocity` constraint, the following inputs can be defined.
+
++------------------------+------------------------------------------------------------------------+-------------+-----------+
+|                        | Description                                                            |   Type      | Default   |
++========================+========================================================================+=============+===========+
+| mean_velocity_x        | mean particle velocity in dir=0                                        | Real        | Undefined |
++------------------------+------------------------------------------------------------------------+-------------+-----------+
+| mean_velocity_y        | mean particle velocity in dir=1                                        | Real        | Undefined |
++------------------------+------------------------------------------------------------------------+-------------+-----------+
+| mean_velocity_z        | mean particle velocity in dir=2                                        | Real        | Undefined |
++------------------------+------------------------------------------------------------------------+-------------+-----------+
+
+Below is an example for zero mean particle velocity in all three directions. 
+
+.. code-block:: none
+
+   particles.constraint = "mean_velocity"
+
+   particles.constraint.mean_velocity_x = 0.
+   particles.constraint.mean_velocity_y = 0.
+   particles.constraint.mean_velocity_z = 0.
+ 
