@@ -241,11 +241,12 @@ prior to following any of the full build instructions above.
                        -DCMAKE_CUDA_ARCHITECTURES=80 \
                        -DHYPRE_ENABLE_CUSPARSE=ON \
                        -DHYPRE_ENABLE_CURAND=ON \
-                       -DCMAKE_CXX_COMPILER=$(which nvc++) 
+                       -DCMAKE_CXX_COMPILER=$(which nvc++) \
                        -DMPI_CXX_COMPILER=$(which CC) \
                        -DCMAKE_C_COMPILER=$(which nvc) \
                        -DMPI_C_COMPILER=$(which cc) \
-                       -DHYPRE_INSTALL_PREFIX="${HYPRE_ROOT}
+                       -DHYPRE_INSTALL_PREFIX=$HYPRE_INSTALL_DIR
+            cd build/
             make -j8 install
             popd
 
