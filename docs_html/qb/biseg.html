@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bidisperse Segregation &mdash; MFIX-Exa  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="References" href="refs.html" />
+    <link rel="prev" title="Single Bubble Injection" href="single_bubble.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            MFIX-Exa
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User guide:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GettingStarted_Chapter.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Inputs_Chapter.html">Run-time Inputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ManagingGridHierarchy_Chapter.html">Gridding and Load Balancing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Fluids_Chapter.html">Solving the Fluid Equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Particles_Chapter.html">Particles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../EB_Chapter.html">Embedded Boundaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Debugging.html">Debugging</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tests and Benchmarks:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../RunningTestSuite.html">Running the MFIX-Exa Test Suite</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../RegressionTesting.html">Regression testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CITests.html">Continuous Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../NightlyTests.html">Nightly Tests</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Qualitative Benchmarks</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="hcs.html">Clustering in the HCS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="granRT.html">Granular Rayleigh-Taylor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mehrdadsbed.html">Mehrdad’s Bed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="single_bubble.html">Single Bubble Injection</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Bidisperse Segregation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="refs.html">References</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">MFIX-Exa</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Qualitative Benchmarks</a></li>
+      <li class="breadcrumb-item active">Bidisperse Segregation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/qb/biseg.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="bidisperse-segregation">
+<span id="chap-qb-biseg"></span><h1>Bidisperse Segregation<a class="headerlink" href="#bidisperse-segregation" title="Link to this heading"></a></h1>
+<p>In this simple test conducted at NETL, a uniform, random mixture
+of nylon
+(<span class="math notranslate nohighlight">\(d_p = 3.19\)</span> mm, <span class="math notranslate nohighlight">\(\rho_p = 1130\)</span> kg/m<sup>3</sup> )
+and ceramic
+(<span class="math notranslate nohighlight">\(d_p = 4.25\)</span> mm, <span class="math notranslate nohighlight">\(\rho_p = 2580\)</span> kg/m<sup>3</sup> )
+particles. When fluidized, the smaller, lighter nylon particles
+(<span class="math notranslate nohighlight">\(U_{mf} \approx 1.1\)</span> m/s) segregate out of the mixture to the top,
+with the larger, heavier ceramic particles  (<span class="math notranslate nohighlight">\(U_{mf} \approx 1.8\)</span> m/s)
+remaining at the bottom. The batch segregation test was conducted in
+a small bed with a square cross-section of side length 60.325 mm.
+Similar to previous observations of fluidized segregation of
+bidisperse mixtures <a class="reference internal" href="refs.html#glmk03" id="id1"><span>[GLMK03]</span></a>, the optimal separation was found to
+occur just above the larger of the two  minimum fluidization velocities.
+Below the larger <span class="math notranslate nohighlight">\(U_{mf}\)</span>, lack of fluidization inhibits particle
+movement and too much above <span class="math notranslate nohighlight">\(U_{mf}\)</span> vigorous bubbling promotes
+mixture in the bed.</p>
+<p>The optimal batch segregation experiment is simulated with MFIX-Exa 19.08
+discretized onto a <span class="math notranslate nohighlight">\(8 \times 24 \times 8\)</span> mesh. No-slip walls are
+set at vertical domain extents with a mass inflow and pressure outflow at
+bottom and top, respectively. The <code class="code highlight cpp c++ docutils literal highlight-c++"><span class="n">Gidaspow</span></code> drag law is applied.
+A defluidization curve of all ceramic particles was traced to find
+<span class="math notranslate nohighlight">\(U_{mf} \approx 1.9\)</span> m/s, close to the experimental value. The inflow
+velocity is set to <cite>2.0</cite> m/s. The image below shows the simulated segregation
+(inset) occurs much more rapidly than observed experimentally. In this case,
+as the nylon particles begin to leave the mixture, the ceramic particles
+defluidize. In the final state, the ceramic particles are essentially static
+with a fluidized layer of nylon particles floating on top, in contrast to the
+experiment, in which the full bed showed signs of fluidization. Investigation
+into the over-segregation in this case is on-going.</p>
+<figure class="align-center" id="id2">
+<a class="reference internal image-reference" href="../_images/netl_biseg_1908_small.png"><img alt="Sim comparison to bidisperse segregation experiment at NETL" src="../_images/netl_biseg_1908_small.png" style="width: 16cm;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Comparison of experiment and MFIX-Exa simulaton for rapid segregation
+of a bi-disperse particle mixture.</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="single_bubble.html" class="btn btn-neutral float-left" title="Single Bubble Injection" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="refs.html" class="btn btn-neutral float-right" title="References" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2017-2018, MFIX-Exa Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

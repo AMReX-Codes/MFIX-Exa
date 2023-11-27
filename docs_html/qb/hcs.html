@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clustering in the HCS &mdash; MFIX-Exa  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Granular Rayleigh-Taylor" href="granRT.html" />
+    <link rel="prev" title="Qualitative Benchmarks" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            MFIX-Exa
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User guide:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GettingStarted_Chapter.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Inputs_Chapter.html">Run-time Inputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ManagingGridHierarchy_Chapter.html">Gridding and Load Balancing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Fluids_Chapter.html">Solving the Fluid Equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Particles_Chapter.html">Particles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../EB_Chapter.html">Embedded Boundaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Debugging.html">Debugging</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tests and Benchmarks:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../RunningTestSuite.html">Running the MFIX-Exa Test Suite</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../RegressionTesting.html">Regression testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CITests.html">Continuous Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../NightlyTests.html">Nightly Tests</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Qualitative Benchmarks</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Clustering in the HCS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="granRT.html">Granular Rayleigh-Taylor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mehrdadsbed.html">Mehrdad’s Bed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="single_bubble.html">Single Bubble Injection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="biseg.html">Bidisperse Segregation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="refs.html">References</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">MFIX-Exa</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Qualitative Benchmarks</a></li>
+      <li class="breadcrumb-item active">Clustering in the HCS</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/qb/hcs.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="clustering-in-the-hcs">
+<span id="chap-qb-hcs"></span><h1>Clustering in the HCS<a class="headerlink" href="#clustering-in-the-hcs" title="Link to this heading"></a></h1>
+<p>The HCS is the simplest non-trivial particulate gas-solid system. The continuum
+gas-phase is initially at rest. The particles are uniformily distributed in space
+and have zero momentum in all three directions. However, the particle pecular
+velocity is non-zero, quantified by an initial <em>granular</em> temperature,
+<span class="math notranslate nohighlight">\(T_0\)</span>. The system is periodic in all directions and no external forces act
+on the system. Under homogeneous conditions, the granular temperature, <span class="math notranslate nohighlight">\(T\)</span>,
+is equivalent to two-thirds of the the (massless) mean particle kinetic energy.
+In the HCS, the Eulerian kinetic theory (KT) model of Garzo et al. <a class="reference internal" href="refs.html#gtsh12" id="id1"><span>[GTSH12]</span></a>
+reduces to:</p>
+<div class="math notranslate nohighlight">
+\[\frac{dT}{dt} = - \frac{2 \gamma}{m} T - \zeta_0 T\]</div>
+<p>where <span class="math notranslate nohighlight">\(m\)</span> is the particle mass, <span class="math notranslate nohighlight">\(\gamma\)</span> is the thermal drag and
+<span class="math notranslate nohighlight">\(\zeta_0\)</span> is the zeroth-order cooling rate. The first term on the RHS
+above represents viscous dissipation due to the interstitial gas while the
+second term represents collisional dissipation due inelastic particle-particle
+interactions. The ODE has an analytical solution given by Yin et al. <a class="reference internal" href="refs.html#yzmh13" id="id2"><span>[YZMH13]</span></a>
+(also see <a class="reference internal" href="refs.html#lbfhhgs16" id="id3"><span>[LBFHHGS16]</span></a> for the exact model used herein which also includes a
+first-order thermal Reynolds number extension to <span class="math notranslate nohighlight">\(\gamma\)</span>). In the absence
+of clustering, the granular temperature in the HCS decays according to the
+analytical solution, known as Haff’s law <a class="reference internal" href="refs.html#h83" id="id4"><span>[H83]</span></a> in granular systems:
+<span class="math notranslate nohighlight">\(\gamma = 0\)</span>. However, at a critical system size <a class="reference internal" href="refs.html#g05" id="id5"><span>[G05]</span></a>, <span class="math notranslate nohighlight">\(L^*_c\)</span>,
+(where <span class="math notranslate nohighlight">\(L^* = L/d_p\)</span>), the initially homogeneous state gives way to the
+most fundamental of gas-solid instabilities, the clustering instability, which
+causes <span class="math notranslate nohighlight">\(T\)</span> (or more accurately <span class="math notranslate nohighlight">\(KE\)</span>) to deviate significantly from
+KT solution due to regions of high and low concentration and correlated motion.</p>
+<p>To test if MFIX-Exa predicts the expected clustering behavior, a system is set up
+with the following non-dimensional parameters:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>initial thermal Reynolds number: <span class="math notranslate nohighlight">\(Re_{T_0} = \rho_g d_p \sqrt{T_0} / \mu_g = 20\)</span></p></li>
+<li><p>density ratio: <span class="math notranslate nohighlight">\(\rho^* = \rho_p / \rho_g = 1000\)</span></p></li>
+<li><p>restitution coefficient: <span class="math notranslate nohighlight">\(e = 0.8\)</span></p></li>
+<li><p>solids concentration: <span class="math notranslate nohighlight">\(\phi = \pi N_p / 6 L^*_x L^*_y L^*_z \approx 0.05\)</span></p></li>
+</ul>
+</div></blockquote>
+<p>While not specifically studied by Fullmer et al. <a class="reference internal" href="refs.html#flyh18" id="id6"><span>[FLYH18]</span></a>, their results
+indicate that <span class="math notranslate nohighlight">\(L_c^*\)</span> may be as large as 100 at these conditions.
+In order to avoid the region near critical stability, we use a significnatly
+larger system size: <span class="math notranslate nohighlight">\(L^*_x = L^*_y = 256\)</span>. The system is thin in the
+depth dimension, <span class="math notranslate nohighlight">\(L^*_z = 8\)</span> in order to highlight the clustering
+phenomena. Therefore, <span class="math notranslate nohighlight">\(N_p = 50000\)</span>. Because the system is hypothetical,
+the ideal <code class="code highlight cpp c++ docutils literal highlight-c++"><span class="n">BVK2</span></code> DNS drag law is applied, see <a class="reference internal" href="refs.html#bvk07" id="id7"><span>[BvK07]</span></a>, <a class="reference internal" href="refs.html#tpkkv15" id="id8"><span>[TPKKv15]</span></a>.</p>
+<figure class="align-center" id="id11">
+<a class="reference internal image-reference" href="../_images/hcs_ke_1908.png"><img alt="kinetic energy decay in the HCS" src="../_images/hcs_ke_1908.png" style="width: 8cm;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Decay of the particle mean kinetic energy compared to the KT analytical
+soluiton of the GTSH model.</span><a class="headerlink" href="#id11" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Three replicate systems are simulated with MFIX-Exa 19.08, differing only
+in initial particle locations and pecular velocities. The particle kinetic
+energy is averaged in the simulations (red) and  compared to the analytical
+granular temperature (black) of the HCS as a function of time in the figure
+above. The kinetic energy <span class="math notranslate nohighlight">\(KE / KE_0\)</span> decays by two to three orders of
+magnitude in line with the HCS result until clustering and localized mean
+motion cause a drastic deviation. The final result at <span class="math notranslate nohighlight">\(t^* = 1000\)</span>
+for one of the replicates is shown below (at right) compared to the seminal
+result of Goldhirsch and Zanetti <a class="reference internal" href="refs.html#gz93" id="id9"><span>[GZ93]</span></a> (true 2D), the original demonstration
+of the clustering instability the HCS.</p>
+<figure class="align-center" id="id12">
+<a class="reference internal image-reference" href="../_images/hcs_xy_1908.png"><img alt="clustered state of the HCS" src="../_images/hcs_xy_1908.png" style="width: 12cm;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Clustered state of the HCS observed by Goldhirsch and Zanetti <a class="reference internal" href="refs.html#gz93" id="id10"><span>[GZ93]</span></a>
+(left) compared to an MFIX-Exa result (right).</span><a class="headerlink" href="#id12" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Qualitative Benchmarks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="granRT.html" class="btn btn-neutral float-right" title="Granular Rayleigh-Taylor" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2017-2018, MFIX-Exa Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

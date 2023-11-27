@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Polaris &mdash; MFIX-Exa  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/tabs.js?v=3030b3cb"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="NCSA Delta" href="Delta.html" />
+    <link rel="prev" title="Perlmutter" href="Perlmutter.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            MFIX-Exa
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User guide:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../Introduction.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../GettingStarted_Chapter.html">Getting Started</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../BuildingMFIX.html">Building MFIX-Exa</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../FirstSimulation.html">Running your first simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Visualization.html">Visualizing simulation results</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../Hpc.html">HPC</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="Frontier.html">OLCF Frontier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Summit.html">OLCF Summit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Crusher.html">OLCF Crusher TDS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Perlmutter.html">Perlmutter</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Polaris</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#basics">Basics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#building-mfix-exa">Building MFIX-Exa</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#optional-build-dependencies">Optional build dependencies</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#running-jobs">Running Jobs</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Delta.html">NCSA Delta</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Bridges2.html">PSC Bridges-2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Joule2.html">Joule 2.0</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Inputs_Chapter.html">Run-time Inputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ManagingGridHierarchy_Chapter.html">Gridding and Load Balancing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Fluids_Chapter.html">Solving the Fluid Equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Particles_Chapter.html">Particles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../EB_Chapter.html">Embedded Boundaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Debugging.html">Debugging</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tests and Benchmarks:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../RunningTestSuite.html">Running the MFIX-Exa Test Suite</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../RegressionTesting.html">Regression testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CITests.html">Continuous Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NightlyTests.html">Nightly Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../qb/index.html">Qualitative Benchmarks</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">MFIX-Exa</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../GettingStarted_Chapter.html">Getting Started</a></li>
+          <li class="breadcrumb-item"><a href="../Hpc.html">Building on HPC Sytems</a></li>
+      <li class="breadcrumb-item active">Polaris</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/getting_started/hpc/Polaris.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="polaris">
+<h1>Polaris<a class="headerlink" href="#polaris" title="Link to this heading"></a></h1>
+<p>If this is your first time building MFIX-Exa on Polaris, please
+review the general notes below and <a class="reference internal" href="#basics">Basics</a> section first.</p>
+<ul>
+<li><p>The documentation for this system can be found <a class="reference external" href="https://docs.alcf.anl.gov/polaris/getting-started/">here.</a></p></li>
+<li><p>Polaris can be accessed from a system with ssh client installed. These connections also work from NETL’s SciLAN and Joule:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>&lt;username&gt;@polaris.alcf.anl.gov
+</pre></div>
+</div>
+<p>Login with your Mobilepass token. No need to prefix or append with anything.</p>
+</li>
+<li><p>These instructions build MFIX-Exa on the login nodes using <cite>-j8</cite> CPUs.
+You may have to decrease this value if there is high traffic
+or you may want to increase this value if you are on a compute
+node interactively.</p></li>
+<li><p>The cmake instructions compile to a <cite>build</cite> directory.
+The gmake instructions compile to a <cite>exec</cite> directory.</p></li>
+<li><p>For the dependencies, it is assumed that you have set the
+following environment variables:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">HYPRE_INSTALL_DIR</span><span class="o">=</span><span class="nv">$HOME</span>/&lt;path/to/my/hypre-install-dir&gt;
+<span class="nb">export</span><span class="w"> </span><span class="nv">CSG_INSTALL_DIR</span><span class="o">=</span><span class="nv">$HOME</span>/&lt;path/to/my/csg-dep-install-dir&gt;
+<span class="nb">export</span><span class="w"> </span><span class="nv">CSG_LIB_DIR</span><span class="o">=</span><span class="nv">$HOME</span>/&lt;path/to/my/csg-lib-install-dir&gt;
+<span class="nb">export</span><span class="w"> </span><span class="nv">ASCENT_INSTALL_DIR</span><span class="o">=</span><span class="nv">$HOME</span>/&lt;path/to/my/ascent-install-dir&gt;
+</pre></div>
+</div>
+<p>to a path that you have read/write access to,
+such as inside the <code class="docutils literal notranslate"><span class="pre">/lus/grand/projects/&lt;account&gt;/</span></code> space corresponding to your account.
+You will need to recall these paths later if you want to build
+MFIX-Exa with the optional dependencies.</p>
+</li>
+<li><p>After building the <cite>mfix</cite> executable (with cmake), you can
+build the PIC-to-DEM restarter app by executing the following command
+in the <cite>build</cite> directory</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cmake<span class="w"> </span>--build<span class="w"> </span>.<span class="w"> </span>--target<span class="w"> </span>pic2dem
+</pre></div>
+</div>
+</li>
+</ul>
+<section id="basics">
+<h2>Basics<a class="headerlink" href="#basics" title="Link to this heading"></a></h2>
+<section id="source-code">
+<h3>Source code<a class="headerlink" href="#source-code" title="Link to this heading"></a></h3>
+<p>Before building, first obtain a copy of the source code
+following the instructions on the
+<a class="reference external" href="https://mfix.netl.doe.gov/products/mfix-exa/download/">MFIX-Exa website.</a></p>
+</section>
+<section id="modules">
+<h3>Modules<a class="headerlink" href="#modules" title="Link to this heading"></a></h3>
+<p>All of the build instructions below have been tested with the
+following modules and environment helpers</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>swap<span class="w"> </span>PrgEnv-nvhpc<span class="w"> </span>PrgEnv-gnu
+module<span class="w"> </span>load<span class="w"> </span>cmake/3.23.2
+</pre></div>
+</div>
+<p>The GPU-enabled builds additionally require</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>load<span class="w"> </span>nvhpc-mixed
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">MPICH_GPU_SUPPORT_ENABLED</span><span class="o">=</span><span class="m">1</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">AMREX_CUDA_ARCH</span><span class="o">=</span><span class="m">8</span>.0
+</pre></div>
+</div>
+<p>Full builds that utilize external dependencies, also require setting
+certain environment variables as discussed below.</p>
+</section>
+</section>
+<section id="building-mfix-exa">
+<h2>Building MFIX-Exa<a class="headerlink" href="#building-mfix-exa" title="Link to this heading"></a></h2>
+<p>The commands below are the superbuild instructions, i.e.,
+AMReX is built as part of the MFIX-Exa build process.
+To build MFIX-Exa with hypre, csg and/or ascent dependencies,
+you first need to build and install these libraries and their dependencies.
+Instructions on building the necessary dependencies are below
+and should be successfully installed first. There are two primary
+methods of building the code <cite>cmake</cite> and <cite>gmake</cite> which are provided
+seperately below.</p>
+<section id="cmake">
+<h3>cmake<a class="headerlink" href="#cmake" title="Link to this heading"></a></h3>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">CPU</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">GPU</button><button aria-controls="panel-0-0-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-2" name="0-2" role="tab" tabindex="-1">CPU-full</button><button aria-controls="panel-0-0-3" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-3" name="0-3" role="tab" tabindex="-1">GPU-full</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cmake<span class="w"> </span>-DCMAKE_C_COMPILER<span class="o">=</span>gcc<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DCMAKE_CXX_COMPILER<span class="o">=</span>g++<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DCMAKE_Fortran_COMPILER<span class="o">=</span>gfortran<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DMFIX_MPI<span class="o">=</span>yes<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DMFIX_OMP<span class="o">=</span>no<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DMFIX_GPU_BACKEND<span class="o">=</span>NONE<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DAMReX_TINY_PROFILE<span class="o">=</span>no<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DMFIX_CSG<span class="o">=</span>no<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DMFIX_HYPRE<span class="o">=</span>no<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Release<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>../
+make<span class="w"> </span>-j8
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cmake<span class="w"> </span>-DCMAKE_C_COMPILER<span class="o">=</span>gcc<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DCMAKE_CXX_COMPILER<span class="o">=</span>g++<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DCMAKE_Fortran_COMPILER<span class="o">=</span>gfortran<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DMFIX_MPI<span class="o">=</span>yes<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DMFIX_OMP<span class="o">=</span>no<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DMFIX_CSG<span class="o">=</span>no<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DMFIX_HYPRE<span class="o">=</span>no<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DMFIX_GPU_BACKEND<span class="o">=</span>CUDA<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DGPUS_PER_NODE<span class="o">=</span><span class="m">4</span><span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DAMReX_TINY_PROFILE<span class="o">=</span>no<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Release<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>../
+make<span class="w"> </span>-j8
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-0-2" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-2" name="0-2" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">HYPRE_DIR</span><span class="o">=</span><span class="nv">$HYPRE_INSTALL_DIR</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">HYPRE_ROOT</span><span class="o">=</span><span class="nv">$HYPRE_DIR</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">HYPRE_LIBRARIES</span><span class="o">=</span><span class="nv">$HYPRE_DIR</span>/lib
+<span class="nb">export</span><span class="w"> </span><span class="nv">HYPRE_INCLUDE_DIRS</span><span class="o">=</span><span class="nv">$HYPRE_DIR</span>/include
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">ASCENT_DIR</span><span class="o">=</span><span class="nv">$ASCENT_INSTALL_DIR</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">CONDUIT_DIR</span><span class="o">=</span><span class="nv">$ASCENT_DIR</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">CMAKE_PREFIX_PATH</span><span class="o">=</span><span class="nv">$CMAKE_PREFIX_PATH</span>:<span class="nv">$ASCENT_DIR</span>/lib/cmake/ascent
+<span class="nb">export</span><span class="w"> </span><span class="nv">CMAKE_PREFIX_PATH</span><span class="o">=</span><span class="nv">$CMAKE_PREFIX_PATH</span>:<span class="nv">$ASCENT_DIR</span>/lib/cmake/conduit
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">CMAKE_PREFIX_PATH</span><span class="o">=</span><span class="nv">$CMAKE_PREFIX_PATH</span>:<span class="nv">$CSG_INSTALL_DIR</span>
+
+cmake<span class="w"> </span>-DCMAKE_C_COMPILER<span class="o">=</span>gcc<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DCMAKE_CXX_COMPILER<span class="o">=</span>g++<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DCMAKE_Fortran_COMPILER<span class="o">=</span>gfortran<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DMFIX_MPI<span class="o">=</span>yes<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DMFIX_OMP<span class="o">=</span>no<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DMFIX_CSG<span class="o">=</span>yes<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DMFIX_HYPRE<span class="o">=</span>yes<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DAMReX_ASCENT<span class="o">=</span>yes<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DAMReX_CONDUIT<span class="o">=</span>yes<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DMFIX_GPU_BACKEND<span class="o">=</span>NONE<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DAMReX_TINY_PROFILE<span class="o">=</span>no<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Release<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>../
+make<span class="w"> </span>-j8
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-0-3" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-3" name="0-3" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">HYPRE_DIR</span><span class="o">=</span><span class="nv">$HYPRE_INSTALL_DIR</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">HYPRE_ROOT</span><span class="o">=</span><span class="nv">$HYPRE_DIR</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">HYPRE_LIBRARIES</span><span class="o">=</span><span class="nv">$HYPRE_DIR</span>/lib
+<span class="nb">export</span><span class="w"> </span><span class="nv">HYPRE_INCLUDE_DIRS</span><span class="o">=</span><span class="nv">$HYPRE_DIR</span>/include
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">ASCENT_DIR</span><span class="o">=</span><span class="nv">$ASCENT_INSTALL_DIR</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">CONDUIT_DIR</span><span class="o">=</span><span class="nv">$ASCENT_DIR</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">CMAKE_PREFIX_PATH</span><span class="o">=</span><span class="nv">$CMAKE_PREFIX_PATH</span>:<span class="nv">$ASCENT_DIR</span>/lib/cmake/ascent
+<span class="nb">export</span><span class="w"> </span><span class="nv">CMAKE_PREFIX_PATH</span><span class="o">=</span><span class="nv">$CMAKE_PREFIX_PATH</span>:<span class="nv">$ASCENT_DIR</span>/lib/cmake/conduit
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">CMAKE_PREFIX_PATH</span><span class="o">=</span><span class="nv">$CMAKE_PREFIX_PATH</span>:<span class="nv">$CSG_INSTALL_DIR</span>
+
+cmake<span class="w"> </span>-DCMAKE_C_COMPILER<span class="o">=</span>gcc<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DCMAKE_CXX_COMPILER<span class="o">=</span>g++<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DCMAKE_Fortran_COMPILER<span class="o">=</span>gfortran<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DMFIX_MPI<span class="o">=</span>yes<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DMFIX_OMP<span class="o">=</span>no<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DMFIX_CSG<span class="o">=</span>yes<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DMFIX_HYPRE<span class="o">=</span>yes<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DAMReX_ASCENT<span class="o">=</span>yes<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DAMReX_CONDUIT<span class="o">=</span>yes<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DMFIX_GPU_BACKEND<span class="o">=</span>CUDA<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DGPUS_PER_NODE<span class="o">=</span><span class="m">4</span><span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DAMReX_TINY_PROFILE<span class="o">=</span>no<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Release<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>../
+make<span class="w"> </span>-j8
+</pre></div>
+</div>
+</div></div>
+</section>
+</section>
+<section id="optional-build-dependencies">
+<h2>Optional build dependencies<a class="headerlink" href="#optional-build-dependencies" title="Link to this heading"></a></h2>
+<p>The following dependencies need to be built and installed
+prior to following any of the full build instructions above.</p>
+<ol class="arabic">
+<li><p>Set environment helpers</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">CC</span><span class="o">=</span><span class="k">$(</span>which<span class="w"> </span>cc<span class="k">)</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">CXX</span><span class="o">=</span><span class="k">$(</span>which<span class="w"> </span>CC<span class="k">)</span>
+
+mkdir<span class="w"> </span><span class="nv">$HOME</span>/scratch<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span><span class="nv">$HOME</span>/scratch
+</pre></div>
+</div>
+</li>
+<li><p>HYPRE</p>
+<p>The GPU build for HYPRE seems to only work with <code class="docutils literal notranslate"><span class="pre">cmake</span></code>.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">CPU</button><button aria-controls="panel-1-1-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-1" name="1-1" role="tab" tabindex="-1">GPU</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/hypre-space/hypre.git
+<span class="nb">pushd</span><span class="w"> </span>hypre/src/
+git<span class="w"> </span>checkout<span class="w"> </span>v2.26.0
+./configure<span class="w"> </span>--prefix<span class="o">=</span><span class="nv">$HYPRE_INSTALL_DIR</span><span class="w"> </span>--with-MPI
+make<span class="w"> </span>-j8<span class="w"> </span>install
+<span class="nb">popd</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-1-1" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-1" name="1-1" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/hypre-space/hypre.git
+<span class="nb">pushd</span><span class="w"> </span>hypre/src/
+git<span class="w"> </span>checkout<span class="w"> </span>v2.26.0
+cmake<span class="w"> </span>-S<span class="w"> </span>.<span class="w"> </span>-B<span class="w"> </span>build<span class="w"> </span><span class="se">\</span>
+<span class="w">           </span>-DCMAKE_INSTALL_PREFIX<span class="o">=</span><span class="nv">$HYPRE_INSTALL_DIR</span><span class="w"> </span><span class="se">\</span>
+<span class="w">           </span>-DHYPRE_WITH_DSUPERLU<span class="o">=</span>OFF<span class="w"> </span><span class="se">\</span>
+<span class="w">           </span>-DHYPRE_ENABLE_BIGINT<span class="o">=</span>OFF<span class="w"> </span><span class="se">\</span>
+<span class="w">           </span>-DHYPRE_WITH_OPENMP<span class="o">=</span>OFF<span class="w"> </span><span class="se">\</span>
+<span class="w">           </span>-DHYPRE_ENABLE_SHARED<span class="o">=</span>ON<span class="w"> </span><span class="se">\</span>
+<span class="w">           </span>-DHYPRE_WITH_MPI<span class="o">=</span>ON<span class="w"> </span><span class="se">\</span>
+<span class="w">           </span>-DHYPRE_WITH_CUDA<span class="o">=</span>ON<span class="w"> </span><span class="se">\</span>
+<span class="w">           </span>-DCMAKE_CUDA_ARCHITECTURES<span class="o">=</span><span class="m">80</span><span class="w"> </span><span class="se">\</span>
+<span class="w">           </span>-DHYPRE_ENABLE_CUSPARSE<span class="o">=</span>ON<span class="w"> </span><span class="se">\</span>
+<span class="w">           </span>-DHYPRE_ENABLE_CURAND<span class="o">=</span>ON<span class="w"> </span><span class="se">\</span>
+<span class="w">           </span>-DCMAKE_CXX_COMPILER<span class="o">=</span><span class="k">$(</span>which<span class="w"> </span>nvc++<span class="k">)</span><span class="w"> </span><span class="se">\</span>
+<span class="w">           </span>-DMPI_CXX_COMPILER<span class="o">=</span><span class="k">$(</span>which<span class="w"> </span>CC<span class="k">)</span><span class="w"> </span><span class="se">\</span>
+<span class="w">           </span>-DCMAKE_C_COMPILER<span class="o">=</span><span class="k">$(</span>which<span class="w"> </span>nvc<span class="k">)</span><span class="w"> </span><span class="se">\</span>
+<span class="w">           </span>-DMPI_C_COMPILER<span class="o">=</span><span class="k">$(</span>which<span class="w"> </span>cc<span class="k">)</span><span class="w"> </span><span class="se">\</span>
+<span class="w">           </span>-DHYPRE_INSTALL_PREFIX<span class="o">=</span><span class="nv">$HYPRE_INSTALL_DIR</span>
+<span class="nb">cd</span><span class="w"> </span>build/
+make<span class="w"> </span>-j8<span class="w"> </span>install
+<span class="nb">popd</span>
+</pre></div>
+</div>
+</div></div>
+</li>
+<li><p>Catch2</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>--depth<span class="w"> </span><span class="m">1</span><span class="w"> </span>--branch<span class="w"> </span>v2.13.7<span class="w"> </span>https://github.com/catchorg/Catch2
+<span class="nb">pushd</span><span class="w"> </span>Catch2/
+cmake<span class="w"> </span>-S<span class="w"> </span>.<span class="w"> </span>-B<span class="w"> </span>build<span class="w"> </span>-DCMAKE_INSTALL_PREFIX<span class="o">=</span><span class="nv">$CSG_INSTALL_DIR</span>
+<span class="nb">cd</span><span class="w"> </span>build/
+make<span class="w"> </span>-j8<span class="w"> </span>install
+<span class="nb">popd</span>
+</pre></div>
+</div>
+</li>
+<li><p>GMP</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget<span class="w"> </span>--no-check-certificate<span class="w"> </span>https://ftp.gnu.org/gnu/gmp/gmp-6.2.1.tar.xz
+tar<span class="w"> </span>-xf<span class="w"> </span>gmp-6.2.1.tar.xz
+<span class="nb">pushd</span><span class="w"> </span>gmp-6.2.1
+./configure<span class="w"> </span>--prefix<span class="o">=</span><span class="nv">$CSG_INSTALL_DIR</span>
+make<span class="w"> </span>-j8<span class="w"> </span>install
+<span class="nb">popd</span>
+</pre></div>
+</div>
+</li>
+<li><p>MPFR</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget<span class="w"> </span>--no-check-certificate<span class="w"> </span>https://ftp.gnu.org/gnu/mpfr/mpfr-4.1.0.tar.xz
+tar<span class="w"> </span>-xf<span class="w"> </span>mpfr-4.1.0.tar.xz
+<span class="nb">pushd</span><span class="w"> </span>mpfr-4.1.0/
+./configure<span class="w"> </span>--with-gmp<span class="o">=</span><span class="nv">$CSG_INSTALL_DIR</span><span class="w"> </span>--prefix<span class="o">=</span><span class="nv">$CSG_INSTALL_DIR</span>
+make<span class="w"> </span>-j8<span class="w"> </span>install
+<span class="nb">popd</span>
+</pre></div>
+</div>
+</li>
+<li><p>Boost</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget<span class="w"> </span>https://boostorg.jfrog.io/artifactory/main/release/1.81.0/source/boost_1_81_0.tar.gz
+tar<span class="w"> </span>-zxvf<span class="w"> </span>boost_1_81_0.tar.gz
+<span class="nb">pushd</span><span class="w"> </span>boost_1_81_0/
+./bootstrap.sh
+./b2<span class="w"> </span>install<span class="w"> </span>--prefix<span class="o">=</span><span class="nv">$CSG_INSTALL_DIR</span>
+<span class="nb">popd</span>
+</pre></div>
+</div>
+</li>
+<li><p>CGAL</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>--depth<span class="w"> </span><span class="m">1</span><span class="w"> </span>--branch<span class="w"> </span>v5.3<span class="w"> </span>https://github.com/CGAL/cgal
+<span class="nb">pushd</span><span class="w"> </span>cgal/
+cmake<span class="w"> </span>-S<span class="w"> </span>.<span class="w"> </span>-B<span class="w"> </span>build<span class="w"> </span>-DCMAKE_INSTALL_PREFIX<span class="o">=</span><span class="nv">$CSG_INSTALL_DIR</span>
+<span class="nb">cd</span><span class="w"> </span>build/
+make<span class="w"> </span>-j8<span class="w"> </span>install
+<span class="nb">popd</span>
+</pre></div>
+</div>
+</li>
+<li><p>PEGTL</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>--branch<span class="w"> </span><span class="m">3</span>.2.2<span class="w"> </span>https://github.com/taocpp/PEGTL
+<span class="nb">pushd</span><span class="w"> </span>PEGTL/
+cmake<span class="w"> </span>-S<span class="w"> </span>.<span class="w"> </span>-B<span class="w"> </span>build<span class="w"> </span>-DCMAKE_INSTALL_PREFIX<span class="o">=</span><span class="nv">$CSG_INSTALL_DIR</span>
+<span class="nb">cd</span><span class="w"> </span>build/
+make<span class="w"> </span>-j8<span class="w"> </span>install
+<span class="nb">popd</span>
+</pre></div>
+</div>
+</li>
+<li><p>Conduit</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>--recursive<span class="w"> </span>https://github.com/LLNL/conduit.git
+<span class="nb">pushd</span><span class="w"> </span>conduit/
+git<span class="w"> </span>checkout<span class="w"> </span>v0.8.6
+mkdir<span class="w"> </span>build<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>build
+cmake<span class="w"> </span>-S<span class="w"> </span>../src<span class="w"> </span>-DCMAKE_INSTALL_PREFIX<span class="o">=</span><span class="nv">$ASCENT_INSTALL_DIR</span><span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DENABLE_OPENMP<span class="o">=</span>OFF<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DENABLE_MPI<span class="o">=</span>ON<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DENABLE_CUDA<span class="o">=</span>OFF<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Release
+make<span class="w"> </span>-j8<span class="w"> </span>install
+<span class="nb">popd</span>
+</pre></div>
+</div>
+</li>
+<li><p>Vtk-m</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>--branch<span class="w"> </span>master<span class="w"> </span>https://gitlab.kitware.com/vtk/vtk-m.git
+<span class="nb">pushd</span><span class="w"> </span>vtk-m/
+git<span class="w"> </span>checkout<span class="w"> </span>v1.9.0
+mkdir<span class="w"> </span>build<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>build/
+cmake<span class="w"> </span>-S<span class="w"> </span>../<span class="w"> </span>-DCMAKE_INSTALL_PREFIX<span class="o">=</span><span class="nv">$ASCENT_INSTALL_DIR</span><span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DVTKm_ENABLE_OPENMP<span class="o">=</span>OFF<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DVTKm_ENABLE_MPI<span class="o">=</span>ON<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DVTKm_ENABLE_CUDA<span class="o">=</span>OFF<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DVTKm_USE_64BIT_IDS<span class="o">=</span>OFF<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DVTKm_USE_DOUBLE_PRECISION<span class="o">=</span>ON<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DVTKm_USE_DEFAULT_TYPES_FOR_ASCENT<span class="o">=</span>ON<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DVTKm_NO_DEPRECATED_VIRTUAL<span class="o">=</span>ON<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Release
+make<span class="w"> </span>-j8<span class="w"> </span>install
+<span class="nb">popd</span>
+</pre></div>
+</div>
+</li>
+<li><p>Ascent</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>--recursive<span class="w"> </span>https://github.com/Alpine-DAV/ascent.git
+<span class="nb">pushd</span><span class="w"> </span>ascent
+git<span class="w"> </span>checkout<span class="w"> </span>v0.9.0
+mkdir<span class="w"> </span>build<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>build/
+cmake<span class="w"> </span>-S<span class="w"> </span>../src<span class="w"> </span>-DCMAKE_INSTALL_PREFIX<span class="o">=</span><span class="nv">$ASCENT_INSTALL_DIR</span><span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DCONDUIT_DIR<span class="o">=</span><span class="nv">$ASCENT_INSTALL_DIR</span><span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DVTKM_DIR<span class="o">=</span><span class="nv">$ASCENT_INSTALL_DIR</span><span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DENABLE_VTKH<span class="o">=</span>ON<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DENABLE_FORTRAN<span class="o">=</span>OFF<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DENABLE_PYTHON<span class="o">=</span>OFF<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DENABLE_DOCS<span class="o">=</span>OFF<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DBUILD_SHARED_LIBS<span class="o">=</span>ON<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Release<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DENABLE_GTEST<span class="o">=</span>OFF<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-DENABLE_TESTS<span class="o">=</span>OFF
+make<span class="w"> </span>-j8<span class="w"> </span>install
+<span class="nb">popd</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="running-jobs">
+<h2>Running Jobs<a class="headerlink" href="#running-jobs" title="Link to this heading"></a></h2>
+<p>Common Slurm commands:</p>
+<ul class="simple">
+<li><p><strong>qsub runit.sh</strong> submit a job to the queue</p></li>
+<li><p><strong>qstat -u USER</strong> check job status of user USER</p></li>
+<li><p><strong>qdel JOBID</strong> kill a job with id JOBID</p></li>
+<li><p><strong>qsub -I -l select=1:system=polaris -l walltime=0:60:00 -l filesystems=home:gran -q debug -A &lt;ACCOUNT&gt;</strong> grab 1 GPU node (for up to 1 hrs)</p></li>
+</ul>
+<p>Example run scripts:</p>
+<p>Example run script for GPU is below. For CPU-only,
+remove <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">nvhpc-mixed</span></code> and <code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">MPICH_GPU_SUPPORT_ENABLED=1</span></code>,
+and the options <code class="docutils literal notranslate"><span class="pre">ppn</span></code> and <code class="docutils literal notranslate"><span class="pre">--cpu-bind</span> <span class="pre">core</span></code> from the run line.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#PBS -A &lt;ACCOUNT&gt;</span>
+<span class="c1">#PBS -q prod</span>
+<span class="c1">#PBS -l select=64:system=polaris</span>
+<span class="c1">#PBS -l filesystems=home:eagle</span>
+<span class="c1">#PBS -l walltime=04:00:00</span>
+<span class="c1">#PBS -N alcc_tk1</span>
+<span class="c1">#PBS -k doe</span>
+<span class="c1">#PBS -o stdout</span>
+<span class="c1">#PBS -e stderr</span>
+<span class="c1">#PBS -m be</span>
+<span class="c1">##PBS -M &lt;email addresses&gt;    # Be default, mail goes to the submitter, use this option to add others (uncomment to use)</span>
+
+<span class="nv">NNODES</span><span class="o">=</span><span class="sb">`</span>wc<span class="w"> </span>-l<span class="w"> </span>&lt;<span class="w"> </span><span class="nv">$PBS_NODEFILE</span><span class="sb">`</span><span class="w">       </span><span class="c1"># number of nodes requested</span>
+<span class="nv">RPN</span><span class="o">=</span><span class="m">4</span><span class="w">                                </span><span class="c1"># assume 1 GPU = 1 resource, 4 GPUs / node</span>
+<span class="nv">RES</span><span class="o">=</span><span class="k">$((</span><span class="nv">NNODES</span><span class="o">*</span><span class="nv">RPN</span><span class="k">))</span><span class="w">                  </span><span class="c1"># total number of resources</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;procs = &#39;</span><span class="nv">$procs</span><span class="s1">&#39; &#39;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;$PBS_O_WORKDIR = &#39;</span><span class="nv">$PBS_O_WORKDIR</span><span class="s1">&#39; &#39;</span>
+<span class="nb">cd</span><span class="w"> </span><span class="nv">$PBS_O_WORKDIR</span>
+
+module<span class="w"> </span>swap<span class="w"> </span>PrgEnv-nvhpc<span class="w"> </span>PrgEnv-gnu
+module<span class="w"> </span>load<span class="w"> </span>nvhpc-mixed
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">MPICH_GPU_SUPPORT_ENABLED</span><span class="o">=</span><span class="m">1</span>
+
+<span class="nb">set</span><span class="w"> </span>+x<span class="w">                               </span><span class="c1"># report all commands to stderr</span>
+env<span class="w">                                  </span><span class="c1"># save the env</span>
+
+mpiexec<span class="w"> </span>-n<span class="w"> </span><span class="nv">$RES</span><span class="w"> </span>-ppn<span class="w"> </span><span class="nv">$RPN</span><span class="w"> </span>--cpu-bind<span class="w"> </span>core<span class="w"> </span>./mfix<span class="w"> </span>inputs<span class="w"> </span>&gt;<span class="w"> </span>screen.1
+<span class="nb">wait</span><span class="w"> </span><span class="m">3</span>
+mpiexec<span class="w"> </span>-n<span class="w"> </span><span class="nv">$RES</span><span class="w"> </span>-ppn<span class="w"> </span><span class="nv">$RPN</span><span class="w"> </span>--cpu-bind<span class="w"> </span>core<span class="w"> </span>./mfix<span class="w"> </span>inputs<span class="w"> </span>&gt;<span class="w"> </span>screen.2
+<span class="nb">wait</span><span class="w"> </span><span class="m">7</span>
+mpiexec<span class="w"> </span>-n<span class="w"> </span><span class="nv">$RES</span><span class="w"> </span>-ppn<span class="w"> </span><span class="nv">$RPN</span><span class="w"> </span>--cpu-bind<span class="w"> </span>core<span class="w"> </span>./mfix<span class="w"> </span>inputs<span class="w"> </span>&gt;<span class="w"> </span>screen.3
+
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;eof EOF EOR eor&#39;</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Perlmutter.html" class="btn btn-neutral float-left" title="Perlmutter" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Delta.html" class="btn btn-neutral float-right" title="NCSA Delta" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2017-2018, MFIX-Exa Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

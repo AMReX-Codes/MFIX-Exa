@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Using Paraview &mdash; MFIX-Exa  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Building on HPC Sytems" href="Hpc.html" />
+    <link rel="prev" title="Visualization" href="Visualization.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            MFIX-Exa
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User guide:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introduction.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../GettingStarted_Chapter.html">Getting Started</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="BuildingMFIX.html">Building MFIX-Exa</a></li>
+<li class="toctree-l2"><a class="reference internal" href="FirstSimulation.html">Running your first simulation</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="Visualization.html">Visualizing simulation results</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Using Paraview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#visualize-the-embedded-boundary">Visualize the embedded boundary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#visualize-the-particles">Visualize the particles</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#visualize-the-cells">Visualize the cells</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Hpc.html">HPC</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Inputs_Chapter.html">Run-time Inputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ManagingGridHierarchy_Chapter.html">Gridding and Load Balancing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Fluids_Chapter.html">Solving the Fluid Equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Particles_Chapter.html">Particles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../EB_Chapter.html">Embedded Boundaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Debugging.html">Debugging</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tests and Benchmarks:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../RunningTestSuite.html">Running the MFIX-Exa Test Suite</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../RegressionTesting.html">Regression testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CITests.html">Continuous Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../NightlyTests.html">Nightly Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../qb/index.html">Qualitative Benchmarks</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">MFIX-Exa</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../GettingStarted_Chapter.html">Getting Started</a></li>
+          <li class="breadcrumb-item"><a href="Visualization.html">Visualization</a></li>
+      <li class="breadcrumb-item active">Using Paraview</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/getting_started/Paraview.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="using-paraview">
+<h1>Using Paraview<a class="headerlink" href="#using-paraview" title="Link to this heading"></a></h1>
+<p><a class="reference external" href="https://www.paraview.org/">Paraview</a> is an opensource visualization tool
+developed by <a class="reference external" href="https://www.kitware.com/">Kitware</a>. It provides an intuit and
+feature rich tool for visualizing simulation data. Kitware provides pre-built
+binaries that can be <a class="reference external" href="https://www.paraview.org/download/">downloaded here</a>.
+Paraview 5.10.1 is the current recommended version.</p>
+<section id="visualize-the-embedded-boundary">
+<h2>Visualize the embedded boundary<a class="headerlink" href="#visualize-the-embedded-boundary" title="Link to this heading"></a></h2>
+<p>The solver will save the embedded boundary if <code class="docutils literal notranslate"><span class="pre">mfix.write_eb_surface</span> <span class="pre">=</span> <span class="pre">true</span></code>
+is set in the inputs file as parallel VTP file named <code class="docutils literal notranslate"><span class="pre">eb.pvtp</span></code>.
+To open the <code class="docutils literal notranslate"><span class="pre">eb.pvtp</span></code> file, press the open button, browse to the simulation
+directory, select the <code class="docutils literal notranslate"><span class="pre">eb.pvtp</span></code> file, and press <code class="docutils literal notranslate"><span class="pre">OK</span></code>. The <code class="docutils literal notranslate"><span class="pre">eb.pvtp</span></code> will
+be displayed in the <code class="docutils literal notranslate"><span class="pre">Pipeline</span> <span class="pre">Browser</span></code>. Make sure the <code class="docutils literal notranslate"><span class="pre">eb.pvtp</span></code> is selected
+in <code class="docutils literal notranslate"><span class="pre">Pipeline</span> <span class="pre">Browser</span></code> and press <code class="docutils literal notranslate"><span class="pre">Apply</span></code> on the properties tab. The embedded
+boundary will now be visible in the 3D viewer. The color and opacity of the
+embedded boundary can be changed on the properties tab.</p>
+<img alt="../_images/paraview_eb.png" src="../_images/paraview_eb.png" />
+</section>
+<section id="visualize-the-particles">
+<h2>Visualize the particles<a class="headerlink" href="#visualize-the-particles" title="Link to this heading"></a></h2>
+<p>The solver will write plot files if one of the write frequency options is set
+(<code class="docutils literal notranslate"><span class="pre">mfix.plot_int</span></code>, <code class="docutils literal notranslate"><span class="pre">mfix.plot_per_exact</span></code>, or <code class="docutils literal notranslate"><span class="pre">mfix.plot_per_approx</span></code>) in
+directories that are prefixed with the prefix specified in the inputs file
+(<code class="docutils literal notranslate"><span class="pre">mfix.plot_file</span> <span class="pre">=</span> <span class="pre">'plt'</span></code>). To visualize these particles in Paraview, press
+the open button. In the file dialog, browse to the simulation directory and
+select the directory group corresponding to the specified prefix. In this
+example, the director group is displayed as <code class="docutils literal notranslate"><span class="pre">plt...</span></code>. If only one plot
+directory has been written, select the <code class="docutils literal notranslate"><span class="pre">plt#####</span></code> directory. Press <code class="docutils literal notranslate"><span class="pre">OK</span></code>.</p>
+<img alt="../_images/paraview_browse_plt.png" src="../_images/paraview_browse_plt.png" />
+<p>A dialog will popup asking what reader to use. Select the
+<code class="docutils literal notranslate"><span class="pre">AMReX/BoxLib</span> <span class="pre">Particles</span> <span class="pre">Reader</span></code> and press <code class="docutils literal notranslate"><span class="pre">OK</span></code>.</p>
+<img alt="../_images/paraview_reader.png" src="../_images/paraview_reader.png" />
+<p>Press <code class="docutils literal notranslate"><span class="pre">Apply</span></code> on the properties tab to read the files. To actually see the
+particles, change the <code class="docutils literal notranslate"><span class="pre">Representation</span></code> from the default <code class="docutils literal notranslate"><span class="pre">Surface</span></code> to
+<code class="docutils literal notranslate"><span class="pre">Point</span> <span class="pre">Gaussian</span></code>. The particles should now be visible in the 3D view.</p>
+<img alt="../_images/paraview_pt_gauss.png" src="../_images/paraview_pt_gauss.png" />
+<p>On the properties tab, the radius of the particles can be changed by moving the
+slider or editing the value in the <code class="docutils literal notranslate"><span class="pre">Gaussian</span> <span class="pre">Radius</span></code> field. The particles can
+be colored by different variables by selecting the variable in the drop down.
+Additionally, if a group of plot files was opened, the simulation can be
+“played” by pressing the play button.</p>
+</section>
+<section id="visualize-the-cells">
+<h2>Visualize the cells<a class="headerlink" href="#visualize-the-cells" title="Link to this heading"></a></h2>
+<p>Following the same method to visualize the particles, the cells can be
+visualized. The major difference is when the dialog asking what read to use
+is displayed, select the <code class="docutils literal notranslate"><span class="pre">AMReX/BoxLib</span> <span class="pre">Grid</span> <span class="pre">Reader</span></code> and press <code class="docutils literal notranslate"><span class="pre">OK</span></code>. On the
+properties tab, select which variables to read (make sure to select <code class="docutils literal notranslate"><span class="pre">ep_g</span></code>,
+we will use this later) and select apply.  Under the Coloring section select
+<code class="docutils literal notranslate"><span class="pre">ep_g</span></code> to color the cells by this value.</p>
+<img alt="../_images/paraview_cells.png" src="../_images/paraview_cells.png" />
+<p>You can open the embedded boundary, particle, and fluid data simultaneously,
+and change the opacities of the embedded boundary and fluid data to visualize
+all the data simultaneously.</p>
+<img alt="../_images/paraview_all.png" src="../_images/paraview_all.png" />
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Visualization.html" class="btn btn-neutral float-left" title="Visualization" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Hpc.html" class="btn btn-neutral float-right" title="Building on HPC Sytems" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2017-2018, MFIX-Exa Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

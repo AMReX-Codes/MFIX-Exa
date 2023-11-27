@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spatial averages &mdash; MFIX-Exa  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="PIC to DEM conversion" href="InputsPICtoDEM.html" />
+    <link rel="prev" title="Checkpoint/Restart" href="InputsCheckpoint.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            MFIX-Exa
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User guide:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GettingStarted_Chapter.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../Inputs_Chapter.html">Run-time Inputs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="InputsProblemDefinition.html">Problem Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InputsCoupling.html">Interphase Coupling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InputsTimeStepping.html">Time Stepping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InputsDiscretization.html">Discretization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InputsInitialization.html">Initialization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InputsLoadBalancing.html">Gridding and Load Balancing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InputsMultigrid.html">Multigrid Inputs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InputsHypre.html">Hypre Inputs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InputsPlotFiles.html">Plotfiles and Other Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InputsCheckpoint.html">Checkpoint/Restart</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Spatial averages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#monitors">Monitors</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#region-selection">Region Selection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#monitor-output">Monitor Output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#monitor-variables">Monitor Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#eulerian-monitors">Eulerian Monitors</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#point-region">Point Region</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#area-or-volume-region">Area or Volume Region</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#surface-integrals">Surface Integrals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#volume-integrals">Volume Integrals</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#lagrangian-monitors">Lagrangian Monitors</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#general-particle-properties">General particle properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#averaged-particle-properties">Averaged particle properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#flow-rates">Flow rates</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="InputsPICtoDEM.html">PIC to DEM conversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InputsVerbosity.html">Verbosity</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ManagingGridHierarchy_Chapter.html">Gridding and Load Balancing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Fluids_Chapter.html">Solving the Fluid Equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Particles_Chapter.html">Particles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../EB_Chapter.html">Embedded Boundaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Debugging.html">Debugging</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tests and Benchmarks:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../RunningTestSuite.html">Running the MFIX-Exa Test Suite</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../RegressionTesting.html">Regression testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CITests.html">Continuous Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../NightlyTests.html">Nightly Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../qb/index.html">Qualitative Benchmarks</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">MFIX-Exa</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../Inputs_Chapter.html">Run-time Inputs</a></li>
+      <li class="breadcrumb-item active">Spatial averages</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/inputs/InputsMonitors.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="spatial-averages">
+<span id="chap-inputsmonitors"></span><h1>Spatial averages<a class="headerlink" href="#spatial-averages" title="Link to this heading"></a></h1>
+<p>The following inputs must be preceded by “mfix.” and control whether to compute
+spatial averages, and how often to output the results.  n is the number of
+spatial averages implicitly defined by the size of avg_region_x_w.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>avg_int</p></td>
+<td><p>Interval, in number of CFD dt’s, to write output</p></td>
+<td><p>Int</p></td>
+<td><p>-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>avg_file</p></td>
+<td><p>Base file name which is appended with the data type (vel_p, p_g,
+ep_g or vel_g), the number of this type of averaging,  and the .csv
+file extension</p></td>
+<td><p>String</p></td>
+<td><p>avg_region</p></td>
+</tr>
+<tr class="row-even"><td><p>avg_ep_g</p></td>
+<td><p>Average and save fluid-phase volume fraction (if 1)</p></td>
+<td><p>n*Int</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>avg_p_g</p></td>
+<td><p>Average and save fluid-phase pressure (if 1)</p></td>
+<td><p>n*Int</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>avg_vel_g</p></td>
+<td><p>Average and save fluid-phase velocity (if 1)</p></td>
+<td><p>n*Int</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>avg_T_g</p></td>
+<td><p>Average and save fluid-phase temperature (if 1)</p></td>
+<td><p>n*Int</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>avg_ro_p</p></td>
+<td><p>Average and save particle density (if 1)</p></td>
+<td><p>n*Int</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>avg_vel_p</p></td>
+<td><p>Average and save particle velocity (if 1)</p></td>
+<td><p>n*Int</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>avg_T_p</p></td>
+<td><p>Average and save particle temperature (if 1)</p></td>
+<td><p>n*Int</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>avg_region_x_w</p></td>
+<td><p>Lower bound of averaging region in x-direction</p></td>
+<td><p>n*Real</p></td>
+<td><p>None</p></td>
+</tr>
+<tr class="row-even"><td><p>avg_region_x_e</p></td>
+<td><p>Upper bound of averaging region in x-direction</p></td>
+<td><p>n*Real</p></td>
+<td><p>None</p></td>
+</tr>
+<tr class="row-odd"><td><p>avg_region_y_s</p></td>
+<td><p>Lower bound of averaging region in y-direction</p></td>
+<td><p>n*Real</p></td>
+<td><p>None</p></td>
+</tr>
+<tr class="row-even"><td><p>avg_region_y_n</p></td>
+<td><p>Upper bound of averaging region in y-direction</p></td>
+<td><p>n*Real</p></td>
+<td><p>None</p></td>
+</tr>
+<tr class="row-odd"><td><p>avg_region_z_b</p></td>
+<td><p>Lower bound of averaging region in z-direction</p></td>
+<td><p>n*Real</p></td>
+<td><p>None</p></td>
+</tr>
+<tr class="row-even"><td><p>avg_region_z_t</p></td>
+<td><p>Upper bound of averaging region in z-direction</p></td>
+<td><p>n*Real</p></td>
+<td><p>None</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="monitors">
+<h1>Monitors<a class="headerlink" href="#monitors" title="Link to this heading"></a></h1>
+<p>A Monitor is a tool for capturing data from the solver about the model.</p>
+<p>Data (such as volume fraction, pressure, velocity, etc.) for a given
+monitor region is written to a CSV file while the solver is running.
+To define monitors, the following inputs must be preceded by “mfix.”:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>monitors</p></td>
+<td><p>Names of the monitors to be computed</p></td>
+<td><p>String</p></td>
+<td><p>None</p></td>
+</tr>
+<tr class="row-odd"><td><p>monitors.[monitor]</p></td>
+<td><p>Monitor type</p></td>
+<td><p>String</p></td>
+<td><p>None</p></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>mfix.monitors = my_monitor0  my_monitor1
+
+mfix.monitors.my_monitor0 = Eulerian::VolumeIntegral::MassWeightedIntegral
+mfix.monitors.my_monitor1 = Lagrangian::Average::VolumeWeightedAverage
+</pre></div>
+</div>
+<section id="region-selection">
+<h2>Region Selection<a class="headerlink" href="#region-selection" title="Link to this heading"></a></h2>
+<p>To define a monitor, there must be a region already defined in the regions
+inputs. A Monitor region is a single point, plane, or volume. Multiple regions
+cannot be combined for a monitor. The following inputs must be preceded by
+“mfix.monitors.”:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>[monitor].region</p></td>
+<td><p>Define the region in which the monitor will be computed</p></td>
+<td><p>String</p></td>
+<td><p>None</p></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># regionA and regionB to be defined in the &quot;regions&quot; inputs section
+mfix.monitors.my_monitor0.region = regionA
+mfix.monitors.my_monitor1.region = regionB
+</pre></div>
+</div>
+</section>
+<section id="monitor-output">
+<h2>Monitor Output<a class="headerlink" href="#monitor-output" title="Link to this heading"></a></h2>
+<p>The monitor data will be output to a file with name given by the input
+“plot_file”, and the extension <code class="docutils literal notranslate"><span class="pre">.csv</span></code> is automatically added. The monitor
+output file is in Comma Separated Value (CSV) format. The first line of the file
+provides header information. The following inputs must be preceded by
+“mfix.monitors.”:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>[monitor].plot_file</p></td>
+<td><p>Define the name of the plotfile where monitor output
+will be saved</p></td>
+<td><p>String</p></td>
+<td><p>None</p></td>
+</tr>
+<tr class="row-odd"><td><p>[monitor].plot_int</p></td>
+<td><p>Define the timestep frequency for saving monitored data
+to file</p></td>
+<td><p>Int</p></td>
+<td><p>-1</p></td>
+</tr>
+<tr class="row-even"><td><p>[monitor].plot_per_approx</p></td>
+<td><p>Define the approximated simulation time at which saving
+monitored data</p></td>
+<td><p>Real</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>[monitor].output.openmode</p></td>
+<td><p>Sets the open mode for the monitor output file.
+Admissible values are:</p>
+<ul class="simple">
+<li><p>“app” for appending to the file if it already exists</p></li>
+<li><p>“trunc” for overwriting the output file if it exists</p></li>
+</ul>
+</td>
+<td><p>String</p></td>
+<td><p>“app”</p></td>
+</tr>
+<tr class="row-even"><td><p>[monitor].output.setw</p></td>
+<td><p>Sets the field width to be used on output file</p></td>
+<td><p>Int</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>[monitor].output.setfill</p></td>
+<td><p>Sets the filling character for the output file</p></td>
+<td><p>Char</p></td>
+<td><p>‘’</p></td>
+</tr>
+<tr class="row-even"><td><p>[monitor].output.setprecision</p></td>
+<td><p>Sets the decimal precision to be used to format
+floating-point values in the output file</p></td>
+<td><p>Int</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>[monitor].output.format</p></td>
+<td><p>Sets the format flags. Admissible values are:</p>
+<ul class="simple">
+<li><p>“defaultfloat”</p></li>
+<li><p>“fixed”</p></li>
+<li><p>“scientific”</p></li>
+</ul>
+</td>
+<td><p>String</p></td>
+<td><p>“”</p></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>mfix.monitors.my_monitor0.plot_file = monitor0_output
+mfix.monitors.my_monitor0.plot_int = 10
+
+mfix.monitors.my_monitor1.plot_file = monitor1_output
+mfix.monitors.my_monitor1.plot_per_approx = 0.01
+</pre></div>
+</div>
+</section>
+<section id="monitor-variables">
+<h2>Monitor Variables<a class="headerlink" href="#monitor-variables" title="Link to this heading"></a></h2>
+<p>The variables to be monitored can be specified in the inputs by including the
+following input preceded by the “mfix.monitors.”:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>[monitor].variables</p></td>
+<td><p>Define which variables are to be monitored by this monitor</p></td>
+<td><p>String</p></td>
+<td><p>None</p></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>mfix.monitors.my_monitor0.variables = T_g  vel_g  p_g  gp_y  X_gk
+
+mfix.monitors.my_monitor1.variables = density  drag_y  T_s  txfr_vel_x
+</pre></div>
+</div>
+</section>
+<section id="eulerian-monitors">
+<h2>Eulerian Monitors<a class="headerlink" href="#eulerian-monitors" title="Link to this heading"></a></h2>
+<p>There are different types of monitors available. A monitor type applies an
+operator (for example a sum, an area integral or a volume integral) to the
+variable. The dimensionality of the region determines which operators can be
+applied.</p>
+<p>The table below summarizes the nomenclature used to describe the monitor
+operators:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Symbol</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\phi_{ijk}\)</span></p></td>
+<td><p>Variable value at indexed cell</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\varepsilon_{ijk}\)</span></p></td>
+<td><p>Phase <strong>volume fraction</strong> at indexed cell</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\rho_{ijk}\)</span></p></td>
+<td><p>Phase <strong>density</strong> at indexed cell</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\vec{v}_{ijk}\)</span></p></td>
+<td><p>Phase <strong>velocity</strong> at indexed cell</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(A_{ijk}\)</span></p></td>
+<td><p>Cross-sectional area of cell</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(V_{ijk}\)</span></p></td>
+<td><p>Volume of indexed cell</p></td>
+</tr>
+</tbody>
+</table>
+<p>The following table lists all the fluid phase variables that can be monitored:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ep_g</p></td>
+<td><p>fluid volume fraction</p></td>
+</tr>
+<tr class="row-odd"><td><p>p_g</p></td>
+<td><p>fluid pressure</p></td>
+</tr>
+<tr class="row-even"><td><p>ro_g</p></td>
+<td><p>fluid density</p></td>
+</tr>
+<tr class="row-odd"><td><p>trac</p></td>
+<td><p>tracer</p></td>
+</tr>
+<tr class="row-even"><td><p>vel_g</p></td>
+<td><p>fluid velocity
+(all the three components of the velocity)</p></td>
+</tr>
+<tr class="row-odd"><td><p>vel_g_[x/y/z]</p></td>
+<td><p>x, y, or z component of the fluid velocity</p></td>
+</tr>
+<tr class="row-even"><td><p>gp</p></td>
+<td><p>fluid pressure gradient
+(all the three components of the gradient)</p></td>
+</tr>
+<tr class="row-odd"><td><p>gp_[x/y/z]</p></td>
+<td><p>x, y, or z component of the fluid pressure gradient</p></td>
+</tr>
+<tr class="row-even"><td><p>T_g</p></td>
+<td><p>fluid temperature</p></td>
+</tr>
+<tr class="row-odd"><td><p>h_g</p></td>
+<td><p>fluid enthalpy</p></td>
+</tr>
+<tr class="row-even"><td><p>X_gk</p></td>
+<td><p>fluid species mass fractions (monitor all the fluid species)</p></td>
+</tr>
+<tr class="row-odd"><td><p>X_gk_[species]</p></td>
+<td><p>fluid “species” mass fraction (only species “species” is monitored)</p></td>
+</tr>
+<tr class="row-even"><td><p>vort</p></td>
+<td><p>fluid vorticity
+(all the three components of the vorticity)</p></td>
+</tr>
+<tr class="row-odd"><td><p>vort[x/y/z]</p></td>
+<td><p>x, y, or z component of the fluid vorticity</p></td>
+</tr>
+<tr class="row-even"><td><p>txfr_velocity</p></td>
+<td><p>interphase velocity transferred to the fluid
+(all the three components of the velocity)</p></td>
+</tr>
+<tr class="row-odd"><td><p>txfr_vel_[x/y/z]</p></td>
+<td><p>x, y, or z component of the interphase velocity transferred to the fluid</p></td>
+</tr>
+<tr class="row-even"><td><p>txfr_beta</p></td>
+<td><p>drag coefficient</p></td>
+</tr>
+<tr class="row-odd"><td><p>txfr_gammaTp</p></td>
+<td><p>convection coefficient multiplied by the solids temperature</p></td>
+</tr>
+<tr class="row-even"><td><p>txfr_gamma</p></td>
+<td><p>convection coefficient</p></td>
+</tr>
+<tr class="row-odd"><td><p>chem_txfr_X_gk</p></td>
+<td><p>rate of mass transferred to the fluid phase due to heterogeneous chemical reactions
+(monitor all the fluid species)</p></td>
+</tr>
+<tr class="row-even"><td><p>chem_txfr_X_gk_[species]</p></td>
+<td><p>fluid “species” rate of mass transferred due to heterogeneous chemical reactions
+(only species “species” is monitored)</p></td>
+</tr>
+<tr class="row-odd"><td><p>chem_txfr_velocity</p></td>
+<td><p>rate of velocity transferred to the fluid phase due to heterogeneous chemical reactions
+(all the three components of the velocity)</p></td>
+</tr>
+<tr class="row-even"><td><p>chem_txfr_vel_[x/y/z]</p></td>
+<td><p>x, y, or z component of the rate of velocity transferred due to heterogeneous reactions</p></td>
+</tr>
+<tr class="row-odd"><td><p>chem_txfr_h</p></td>
+<td><p>rate of enthalpy transferred to the fluid phase due to heterogeneous chemical reactions</p></td>
+</tr>
+<tr class="row-even"><td><p>divtau</p></td>
+<td><p>divergence of the viscous stress tensor
+(all the three components)</p></td>
+</tr>
+<tr class="row-odd"><td><p>divtau_[x/y/z]</p></td>
+<td><p>x, y, or z component of the divergence of the viscous stress tensor</p></td>
+</tr>
+</tbody>
+</table>
+<section id="point-region">
+<h3>Point Region<a class="headerlink" href="#point-region" title="Link to this heading"></a></h3>
+<p>For a point region, the monitor data value is simply the value of the variable
+at that point:</p>
+<dl>
+<dt>Value</dt><dd><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>Eulerian::PointRegion::Value</p></td>
+</tr>
+</tbody>
+</table>
+<p>Returns the value of the field quantity in the selected region.</p>
+<div class="math notranslate nohighlight">
+\[\phi_{ijk}\]</div>
+</dd>
+</dl>
+</section>
+<section id="area-or-volume-region">
+<h3>Area or Volume Region<a class="headerlink" href="#area-or-volume-region" title="Link to this heading"></a></h3>
+<p>The following  monitor types are valid for area and volume regions:</p>
+<dl>
+<dt>Sum</dt><dd><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>Eulerian::AreaRegion::Sum</p></td>
+</tr>
+<tr class="row-even"><td><p>Eulerian::VolumeRegion::Sum</p></td>
+</tr>
+</tbody>
+</table>
+<p>The sum is computed by summing all values of the field quantity in the
+selected region.</p>
+<div class="math notranslate nohighlight">
+\[\sum_{ijk}\phi_{ijk}\]</div>
+</dd>
+<dt>Min</dt><dd><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>Eulerian::AreaRegion::Min</p></td>
+</tr>
+<tr class="row-even"><td><p>Eulerian::VolumeRegion::Min</p></td>
+</tr>
+</tbody>
+</table>
+<p>Minimum value of the field quantity in the selected region.</p>
+<div class="math notranslate nohighlight">
+\[\min_{ijk} \phi_{ijk}\]</div>
+</dd>
+<dt>Max</dt><dd><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>Eulerian::AreaRegion::Max</p></td>
+</tr>
+<tr class="row-even"><td><p>Eulerian::VolumeRegion::Max</p></td>
+</tr>
+</tbody>
+</table>
+<p>Maximum value of the field quantity in the selected region.</p>
+<div class="math notranslate nohighlight">
+\[\max_{ijk} \phi_{ijk}\]</div>
+</dd>
+<dt>Average</dt><dd><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>Eulerian::AreaRegion::Average</p></td>
+</tr>
+<tr class="row-even"><td><p>Eulerian::VolumeRegion::Average</p></td>
+</tr>
+</tbody>
+</table>
+<p>Average value of the field quantity in the selected region where <span class="math notranslate nohighlight">\(N\)</span> is
+the total number of observations (cells) in the selected region.</p>
+<div class="math notranslate nohighlight">
+\[\phi_0 = \frac{\sum_{ijk} \phi_{ijk}}{N}\]</div>
+</dd>
+<dt>Standard Deviation</dt><dd><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>Eulerian::AreaRegion::StandardDeviation</p></td>
+</tr>
+<tr class="row-even"><td><p>Eulerian::VolumeRegion::StandardDeviation</p></td>
+</tr>
+</tbody>
+</table>
+<p>The standard deviation of the field quantity in the selected region where
+<span class="math notranslate nohighlight">\(\phi_0\)</span> is the average of the variable in the selected region.</p>
+<div class="math notranslate nohighlight">
+\[\sigma_{\phi} = \sqrt{\frac{ \sum_{ijk} (\phi_{ijk}-\phi_{0})^2 }{N}}\]</div>
+</dd>
+</dl>
+</section>
+<section id="surface-integrals">
+<h3>Surface Integrals<a class="headerlink" href="#surface-integrals" title="Link to this heading"></a></h3>
+<p>The following types are only valid for area regions:</p>
+<dl>
+<dt>Area</dt><dd><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>Eulerian::SurfaceIntegral::Area</p></td>
+</tr>
+</tbody>
+</table>
+<p>Area of selected region is computed by summing the areas of the facets that
+define the surface.</p>
+<div class="math notranslate nohighlight">
+\[\int dA = \sum_{ijk} \lvert A_{ijk} \rvert\]</div>
+</dd>
+<dt>Area-Weighted Average</dt><dd><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>Eulerian::SurfaceIntegral::AreaWeightedAverage</p></td>
+</tr>
+</tbody>
+</table>
+<p>The area-weighted average is computed by dividing the summation of the
+product of the selected variable and facet area by the total area of the
+region.</p>
+<div class="math notranslate nohighlight">
+\[\frac{\int\phi dA}{A} = \frac{\sum_{ijk}{\phi_{ijk} \lvert A_{ijk} \rvert}}{\sum_{ijk}{\lvert A_{ijk} \rvert}}\]</div>
+</dd>
+<dt>Flow Rate</dt><dd><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>Eulerian::SurfaceIntegral::FlowRate</p></td>
+</tr>
+</tbody>
+</table>
+<p>The flow rate of a field variable through a surface is computed by summing
+the product of the phase volume fraction, density, the selected field
+variable, phase velocity normal to the facet <span class="math notranslate nohighlight">\(v_n\)</span>, and the facet area.</p>
+<div class="math notranslate nohighlight">
+\[\int\varepsilon\rho\phi{v_n}dA = \sum_{ijk}\varepsilon_{ijk}\rho_{ijk}\phi_{ijk} {v}_{n,ijk} \lvert A_{ijk} \rvert\]</div>
+</dd>
+<dt>Mass Flow Rate</dt><dd><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>Eulerian::SurfaceIntegral::MassFlowRate</p></td>
+</tr>
+</tbody>
+</table>
+<p>The mass flow rate through a surface is computed by summing the product of
+the phase volume fraction, density, phase velocity normal to the facet
+<span class="math notranslate nohighlight">\(v_n\)</span>, and the facet area.</p>
+<div class="math notranslate nohighlight">
+\[\int\varepsilon\rho{v_n} dA = \sum_{ijk}\varepsilon_{ijk}\rho_{ijk}{v}_{n,ijk}  \lvert A_{ijk} \rvert\]</div>
+</dd>
+<dt>Mass-Weighted Average</dt><dd><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>Eulerian::SurfaceIntegral::MassWeightedAverage</p></td>
+</tr>
+</tbody>
+</table>
+<p>The mass flow rate through a surface is computed by summing the product of
+the phase volume fraction, density, phase velocity normal to the facet, and
+the facet area.</p>
+<div class="math notranslate nohighlight">
+\[\frac{\int\varepsilon\rho\phi{v_n}dA}{\int\varepsilon\rho{v_n}dA} = \frac{\sum_{ijk}\varepsilon_{ijk}\rho_{ijk}\phi_{ijk} {v}_{n,ijk} \lvert A_{ijk} \rvert}{\sum_{ijk}\varepsilon_{ijk}\rho_{ijk} {v}_{n,ijk} \lvert A_{ijk} \rvert}\]</div>
+</dd>
+<dt>Volume Flow Rate</dt><dd><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>Eulerian::SurfaceIntegral::VolumeFlowRate</p></td>
+</tr>
+</tbody>
+</table>
+<p>The volume flow rate through a surface is computed by summing the product of
+the phase volume fraction, phase velocity normal to the facet <span class="math notranslate nohighlight">\(v_n\)</span>,
+and the facet area.</p>
+<div class="math notranslate nohighlight">
+\[\int\varepsilon{v_n}dA = \sum_{ijk}\varepsilon_{ijk}{v}_{n,ijk} \lvert A_{ijk} \rvert\]</div>
+</dd>
+</dl>
+</section>
+<section id="volume-integrals">
+<h3>Volume Integrals<a class="headerlink" href="#volume-integrals" title="Link to this heading"></a></h3>
+<p>The following types are only valid for volume regions:</p>
+<dl>
+<dt>Volume</dt><dd><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>Eulerian::VolumeIntegral::Volume</p></td>
+</tr>
+</tbody>
+</table>
+<p>The volume is computed by summing all of the cell volumes in the selected
+region.</p>
+<div class="math notranslate nohighlight">
+\[\int  dV = \sum_{ijk}{ \lvert V_{ijk}} \rvert\]</div>
+</dd>
+<dt>Volume Integral</dt><dd><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>Eulerian::VolumeIntegral::VolumeIntegral</p></td>
+</tr>
+</tbody>
+</table>
+<p>The volume integral is computed by summing the product of the selected field
+variable and the cell volume.</p>
+<div class="math notranslate nohighlight">
+\[\int \phi dV = \sum_{ijk}{\phi_{ijk} \lvert V_{ijk}} \rvert\]</div>
+</dd>
+<dt>Volume-Weighted Average</dt><dd><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>Eulerian::VolumeIntegral::VolumeWeightedAverage</p></td>
+</tr>
+</tbody>
+</table>
+<p>The volume-weighted average is computed by dividing the summation of the
+product of the selected field variable and cell volume by the sum of the cell
+volumes.</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[\frac{\int\phi dV}{V} = \frac{\sum_{ijk}{\phi_{ijk} \lvert V_{ijk} \rvert}}{\sum_{ijk}{\lvert V_{ijk} \rvert}}\]</div>
+</div></blockquote>
+</dd>
+<dt>Mass-Weighted Integral</dt><dd><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>Eulerian::VolumeIntegral::MassWeightedIntegral</p></td>
+</tr>
+</tbody>
+</table>
+<p>The mass-weighted integral is computed by summing the product of phase volume
+fraction, density, selected field variable, and cell volume.</p>
+<div class="math notranslate nohighlight">
+\[\int \varepsilon\rho\phi dV = \sum_{ijk}\varepsilon_{ijk}\rho_{ijk}\phi_{ijk} \lvert V_{ijk}\rvert\]</div>
+</dd>
+<dt>Mass-Weighted Average</dt><dd><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>Eulerian::VolumeIntegral::MassWeightedAverage</p></td>
+</tr>
+</tbody>
+</table>
+<p>The mass-weighted average is computed by dividing the sum of the product of
+phase volume fraction, density, selected field variable, and cell volume by
+the summation of the product of the phase volume fraction, density, and cell
+volume.</p>
+<div class="math notranslate nohighlight">
+\[\frac{\int\phi\rho\varepsilon dV}{\int\rho\varepsilon dV} = \frac{\sum_{ijk}\varepsilon_{ijk}\rho_{ijk}\phi_{ijk} \lvert V_{ijk}\rvert}{\sum_{ijk}\varepsilon_{ijk}\rho_{ijk} \lvert V_{ijk}\rvert}\]</div>
+</dd>
+</dl>
+</section>
+</section>
+<section id="lagrangian-monitors">
+<h2>Lagrangian Monitors<a class="headerlink" href="#lagrangian-monitors" title="Link to this heading"></a></h2>
+<p>There are different types of monitors available. A monitor type applies an
+operator (for example a sum, an area integral or a volume integral) to the
+variable. The dimensionality of the region determines which operators can be
+applied.</p>
+<p>The table below summarizes the nomenclature used to describe the monitor
+operators:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Symbol</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\phi_p\)</span></p></td>
+<td><p>Variable value of the indexed particle</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(m_p\)</span></p></td>
+<td><p><strong>Mass</strong> of the indexed particle</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(V_p\)</span></p></td>
+<td><p><strong>Volume</strong> of the indexed particle</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\mathcal{w}_p\)</span></p></td>
+<td><p><strong>Statistical weight</strong> of the indexed particle <a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></td>
+</tr>
+</tbody>
+</table>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id2" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p><em>The statistical weight is one for DEM simulations.</em></p>
+</aside>
+</aside>
+<p>The following table lists all the solids phase variables that can be monitored:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>position</p></td>
+<td><p>particles position (all the three components)</p></td>
+</tr>
+<tr class="row-odd"><td><p>pos_[x/y/z]</p></td>
+<td><p>x, y, or z component of the particles position</p></td>
+</tr>
+<tr class="row-even"><td><p>id</p></td>
+<td><p>particles id</p></td>
+</tr>
+<tr class="row-odd"><td><p>cpu</p></td>
+<td><p>particles cpu</p></td>
+</tr>
+<tr class="row-even"><td><p>radius</p></td>
+<td><p>particles radius</p></td>
+</tr>
+<tr class="row-odd"><td><p>volume</p></td>
+<td><p>particles volume</p></td>
+</tr>
+<tr class="row-even"><td><p>mass</p></td>
+<td><p>particles mass</p></td>
+</tr>
+<tr class="row-odd"><td><p>density</p></td>
+<td><p>particles density</p></td>
+</tr>
+<tr class="row-even"><td><p>oneOverI</p></td>
+<td><p>particles inverse of momentum of inertia</p></td>
+</tr>
+<tr class="row-odd"><td><p>velocity</p></td>
+<td><p>particles velocity (all the three components)</p></td>
+</tr>
+<tr class="row-even"><td><p>vel_[x/y/z]</p></td>
+<td><p>x, y, or z component of the particles velocity</p></td>
+</tr>
+<tr class="row-odd"><td><p>omega</p></td>
+<td><p>particles angular velocity (all the three components)</p></td>
+</tr>
+<tr class="row-even"><td><p>omega_[x/y/z]</p></td>
+<td><p>x, y, or z component of the particles angular velocity</p></td>
+</tr>
+<tr class="row-odd"><td><p>statwt</p></td>
+<td><p>particles statistical weight</p></td>
+</tr>
+<tr class="row-even"><td><p>dragcoeff</p></td>
+<td><p>particles drag coefficient</p></td>
+</tr>
+<tr class="row-odd"><td><p>drag</p></td>
+<td><p>particles drag (all the three components)</p></td>
+</tr>
+<tr class="row-even"><td><p>drag_[x/y/z]</p></td>
+<td><p>x, y, or z component of the particles drag</p></td>
+</tr>
+<tr class="row-odd"><td><p>cp_s</p></td>
+<td><p>particles specific heat coefficient</p></td>
+</tr>
+<tr class="row-even"><td><p>T_s</p></td>
+<td><p>particles temperature</p></td>
+</tr>
+<tr class="row-odd"><td><p>convection</p></td>
+<td><p>particles convective heat transfer</p></td>
+</tr>
+<tr class="row-even"><td><p>phase</p></td>
+<td><p>particles phase</p></td>
+</tr>
+<tr class="row-odd"><td><p>state</p></td>
+<td><p>particles state</p></td>
+</tr>
+<tr class="row-even"><td><p>X_sn</p></td>
+<td><p>particles species mass fractions (for all the solids species)</p></td>
+</tr>
+<tr class="row-odd"><td><p>X_sn_[species]</p></td>
+<td><p>solids “species” mass fraction (only species “species” is monitored)</p></td>
+</tr>
+<tr class="row-even"><td><p>txfr_velocity</p></td>
+<td><p>rate of velocity transferred to the fluid phase due to heterogeneous chemical reactions
+(all the three components)</p></td>
+</tr>
+<tr class="row-odd"><td><p>txfr_vel_[x/y/z]</p></td>
+<td><p>x, y, or z components of the transferred velocity due to heterogeneous reactions</p></td>
+</tr>
+<tr class="row-even"><td><p>txfr_h</p></td>
+<td><p>rate of enthalpy transferred due to heterogeneous chemical reactions</p></td>
+</tr>
+<tr class="row-odd"><td><p>txfr_X_sn</p></td>
+<td><p>rate of mass transferred due to heterogeneous chemical reactions (for all the species)</p></td>
+</tr>
+<tr class="row-even"><td><p>txfr_X_sn_[species]</p></td>
+<td><p>solids “species” rate of transfer due to heterogeneous reactions (only species
+“species” is monitored)</p></td>
+</tr>
+</tbody>
+</table>
+<section id="general-particle-properties">
+<h3>General particle properties<a class="headerlink" href="#general-particle-properties" title="Link to this heading"></a></h3>
+<p>General particle properties can be obtained from area (plane) and volume
+regions. For area regions, all particles in Eulerian cells that intersect the
+plane are used in evaluating the average.</p>
+<dl>
+<dt>Sum</dt><dd><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>Lagrangian::GeneralProperty::Sum</p></td>
+</tr>
+</tbody>
+</table>
+<p>The sum of particle property, <span class="math notranslate nohighlight">\(\phi_p\)</span> in the selected region is
+calculated using the following expression.</p>
+<div class="math notranslate nohighlight">
+\[\sum_p w_p \phi_p\]</div>
+</dd>
+<dt>Min</dt><dd><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>Lagrangian::GeneralProperty::Min</p></td>
+</tr>
+</tbody>
+</table>
+<p>The minimum value of particle property <span class="math notranslate nohighlight">\(phi_p\)</span> is the selected region
+is obtained using the following expression.</p>
+<div class="math notranslate nohighlight">
+\[\min_p \phi_p\]</div>
+</dd>
+<dt>Max</dt><dd><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>Lagrangian::GeneralProperty::Max</p></td>
+</tr>
+</tbody>
+</table>
+<p>The maximum value of particle property <span class="math notranslate nohighlight">\(phi_p\)</span> is the selected region
+is obtained using the following expression.</p>
+<div class="math notranslate nohighlight">
+\[\max_p \phi_p\]</div>
+</dd>
+</dl>
+</section>
+<section id="averaged-particle-properties">
+<h3>Averaged particle properties<a class="headerlink" href="#averaged-particle-properties" title="Link to this heading"></a></h3>
+<p>Particle properties can be averaged over area (plane) and volume regions. For
+area regions, all particles in Eulerian cells that intersect the plane are used
+in evaluating the average.</p>
+<dl>
+<dt>Average</dt><dd><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>Lagrangian::AveragedProperty::Average</p></td>
+</tr>
+</tbody>
+</table>
+<p>The average value of particle property, <span class="math notranslate nohighlight">\(\phi_p\)</span> in the selected region
+is calculated using the following expression. For DEM simulations, the
+statistical weight of a particle, <span class="math notranslate nohighlight">\(w_p\)</span>, is one such that the sum of
+the weights is the total number of observations in the selected region.</p>
+<div class="math notranslate nohighlight">
+\[\bar{\phi} = \frac{\sum_p w_p \phi_p}{\sum_p w_p}\]</div>
+</dd>
+<dt>Standard Deviation</dt><dd><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>Lagrangian::AveragedProperty::StandardDeviation</p></td>
+</tr>
+</tbody>
+</table>
+<p>The standard deviation of particle property, <span class="math notranslate nohighlight">\(phi_p\)</span> in the selected
+region is calculated using the following expression.  <span class="math notranslate nohighlight">\(\bar{\phi}\)</span> is
+the averaged variable in the selected region.</p>
+<div class="math notranslate nohighlight">
+\[\sigma_{\phi} = \sqrt{\frac{ \sum_p w_p (\phi_p-\bar{\phi})^2 }{\sum_p w_p}}\]</div>
+</dd>
+<dt>Mass-weighted average</dt><dd><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>Lagrangian::AveragedProperty::MassWeightedAverage</p></td>
+</tr>
+</tbody>
+</table>
+<p>Mass-weighted average value of particle property, <span class="math notranslate nohighlight">\(\phi_p\)</span> in the
+selected region is calculated using the following expression.</p>
+<div class="math notranslate nohighlight">
+\[\bar{\phi}_m = \frac{\sum_{p} w_p m_p \phi_p}{\sum_p w_p m_p }\]</div>
+</dd>
+<dt>Volume-weighted average</dt><dd><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>Lagrangian::AveragedProperty::VolumeWeightedAverage</p></td>
+</tr>
+</tbody>
+</table>
+<p>Volume-weighted average value of particle property, <span class="math notranslate nohighlight">\(\phi_p\)</span> in the
+selected region is calculated using the following expression.</p>
+<div class="math notranslate nohighlight">
+\[\bar{\phi}_v = \frac{\sum_{p} w_p V_p \phi_p}{\sum_p w_p V_p}\]</div>
+</dd>
+</dl>
+</section>
+<section id="flow-rates">
+<h3>Flow rates<a class="headerlink" href="#flow-rates" title="Link to this heading"></a></h3>
+<p>For Lagrangian monitors of type FlowRate, the flow plane must be specified in
+the inputs and it must be defined by one of the regions defined in the regions
+inputs. The following input for a monitor [monitor] of type FlowRate can be
+used, preceeded by the “mfix.monitors” prefix.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>[monitor].plane</p></td>
+<td><p>defines the plane through which the flow rate of the particles in the
+monitoring region [region] will be computed</p></td>
+<td><p>String</p></td>
+<td><p>None</p></td>
+</tr>
+</tbody>
+</table>
+<p>Flow rate monitors for Lagrangian particles (DEM/PIC) are only valid for area
+(plane) regions. The set of particles crossing the flow plane, <span class="math notranslate nohighlight">\(\Gamma\)</span> is
+approximated using the height of the plane, <span class="math notranslate nohighlight">\(h\)</span>, the position of the
+particle, <span class="math notranslate nohighlight">\(x_p\)</span>, and the particle velocity normal to the plane,
+<span class="math notranslate nohighlight">\(v_p\)</span> such that</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[(v_p)\left(\frac{x_p - h}{\Delta t}\right) &gt; 0\]</div>
+</div></blockquote>
+<p>and</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[\left|v_p\right| \geq  \left| \frac{x_p - h}{\Delta t} \right|\]</div>
+</div></blockquote>
+<dl>
+<dt>Flow rate</dt><dd><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>Lagrangian::FlowRate::FlowRate</p></td>
+</tr>
+</tbody>
+</table>
+<p>The net flow rate of a general particle property <span class="math notranslate nohighlight">\(\phi_p\)</span> is computed
+by summing the properties of the set of particles projected to have crossed
+the flow plane, <span class="math notranslate nohighlight">\(\Gamma\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\sum_{p \in \Gamma} w_p \phi_p \frac{v_p}{\left| v_p \right|}\]</div>
+</dd>
+<dt>Mass-weighted flow rate</dt><dd><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>Lagrangian::FlowRate::MassWeightedFlowRate</p></td>
+</tr>
+</tbody>
+</table>
+<p>The net mass-weighted flow rate is the sum of the general particle property
+<span class="math notranslate nohighlight">\(\phi_p\)</span> multiplied by the particle mass, <span class="math notranslate nohighlight">\(m_p\)</span> of the set of
+particles projected to have crossed the flow plane, <span class="math notranslate nohighlight">\(\Gamma\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\sum_{p \in \Gamma} w_p m_p \phi_p \frac{v_p}{\left| v_p \right|}\]</div>
+</dd>
+<dt>Volume-weighted flow rate</dt><dd><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>Lagrangian::FlowRate::VolumeWeightedFlowRate</p></td>
+</tr>
+</tbody>
+</table>
+<p>The net volume-weighted flow rate is the sum of the general particle property
+<span class="math notranslate nohighlight">\(\phi_p\)</span> multiplied by the particle volume, <span class="math notranslate nohighlight">\(V_p\)</span> of the set of
+particles projected to have crossed the flow plane, <span class="math notranslate nohighlight">\(\Gamma\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\sum_{p \in \Gamma}\phi_p w_p V_p \frac{v_p}{\left| v_p \right|}\]</div>
+</dd>
+</dl>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="InputsCheckpoint.html" class="btn btn-neutral float-left" title="Checkpoint/Restart" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="InputsPICtoDEM.html" class="btn btn-neutral float-right" title="PIC to DEM conversion" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2017-2018, MFIX-Exa Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

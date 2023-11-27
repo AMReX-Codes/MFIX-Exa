@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Running the MFIX-Exa Test Suite &mdash; MFIX-Exa  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Regression testing" href="RegressionTesting.html" />
+    <link rel="prev" title="Debugging" href="Debugging.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            MFIX-Exa
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User guide:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GettingStarted_Chapter.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Inputs_Chapter.html">Run-time Inputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ManagingGridHierarchy_Chapter.html">Gridding and Load Balancing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Fluids_Chapter.html">Solving the Fluid Equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Particles_Chapter.html">Particles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EB_Chapter.html">Embedded Boundaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Debugging.html">Debugging</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tests and Benchmarks:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Running the MFIX-Exa Test Suite</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#run-all-tests">Run all tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#list-all-tests-without-running-them">List all tests (without running them)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#run-a-particular-test-by-the-index-listed-in-ctest-n">Run a particular test by the index listed in ctest -N</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#run-a-particular-test-by-name">Run a particular test by name</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#run-a-particular-test-via-make">Run a particular test via make</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#run-specific">Run specific</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#run-a-user-defined-case">Run a user-defined case</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="RegressionTesting.html">Regression testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CITests.html">Continuous Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NightlyTests.html">Nightly Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qb/index.html">Qualitative Benchmarks</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">MFIX-Exa</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Running the MFIX-Exa Test Suite</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/RunningTestSuite.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="running-the-mfix-exa-test-suite">
+<h1>Running the MFIX-Exa Test Suite<a class="headerlink" href="#running-the-mfix-exa-test-suite" title="Link to this heading"></a></h1>
+<p>MFIX-Exa comes with several tests aimed at evaluating software
+functionalities. The source files as well as the required input files
+for each test are located in the <code class="docutils literal notranslate"><span class="pre">tests</span></code> directory. The <code class="docutils literal notranslate"><span class="pre">tests</span></code>
+directory is copied to the build directory during MFIX-Exa configuration
+process. When a test is run (see below), output files are stored in
+<code class="docutils literal notranslate"><span class="pre">build_dir/tests/test-name</span></code>.</p>
+<p>There are various dependencies for comparing test results.</p>
+<p>o To compare results to archived flow slices stored in <code class="docutils literal notranslate"><span class="pre">AUTOTEST</span></code>
+directories with the case files, the environment variable <code class="docutils literal notranslate"><span class="pre">FEXTRACT</span></code>
+must point to the location of the AMReX <code class="docutils literal notranslate"><span class="pre">fextract</span></code> utility located in
+the directory, <code class="docutils literal notranslate"><span class="pre">amrex/Tools/PostProcessing/F_Src</span></code>. Additionally,
+<code class="docutils literal notranslate"><span class="pre">numdiff</span></code> must be installed for comparing results.</p>
+<p>o To compare point-by-point field data, the environment variable
+<code class="docutils literal notranslate"><span class="pre">FCOMPARE</span></code> must point the AMReX utility <code class="docutils literal notranslate"><span class="pre">plt_compare_diff_grids</span></code>
+found in the directory, <code class="docutils literal notranslate"><span class="pre">amrex/Tools/PostProcessing/F_Src</span></code>.
+Additionally, the environment variable <code class="docutils literal notranslate"><span class="pre">MFIX_BENCHMARKS_HOME</span></code> must
+point to the location of a local regression test data set. See
+<em>Generating local regression test data</em> for instructions on creating a
+local regression test data set.</p>
+<section id="run-all-tests">
+<h2>Run all tests<a class="headerlink" href="#run-all-tests" title="Link to this heading"></a></h2>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>&gt;<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>to<span class="w"> </span>mfix-build-dir
+&gt;<span class="w"> </span>ctest
+</pre></div>
+</div>
+</section>
+<section id="list-all-tests-without-running-them">
+<h2>List all tests (without running them)<a class="headerlink" href="#list-all-tests-without-running-them" title="Link to this heading"></a></h2>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>&gt;<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>to<span class="w"> </span>mfix-build-dir
+&gt;<span class="w"> </span>ctest<span class="w"> </span>-N
+</pre></div>
+</div>
+</section>
+<section id="run-a-particular-test-by-the-index-listed-in-ctest-n">
+<h2>Run a particular test by the index listed in ctest -N<a class="headerlink" href="#run-a-particular-test-by-the-index-listed-in-ctest-n" title="Link to this heading"></a></h2>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>&gt;<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>to<span class="w"> </span>mfix-build-dir
+&gt;<span class="w"> </span>ctest<span class="w"> </span>-I<span class="w"> </span><span class="m">3</span>,3<span class="w">             </span><span class="c1"># run the third test</span>
+</pre></div>
+</div>
+</section>
+<section id="run-a-particular-test-by-name">
+<h2>Run a particular test by name<a class="headerlink" href="#run-a-particular-test-by-name" title="Link to this heading"></a></h2>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>&gt;<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>to<span class="w"> </span>mfix-build-dir
+&gt;<span class="w"> </span>ctest<span class="w"> </span>-R<span class="w"> </span>DEM01<span class="w">  </span><span class="c1"># running all tests with &quot;DEM01&quot; in the test name</span>
+</pre></div>
+</div>
+</section>
+<section id="run-a-particular-test-via-make">
+<h2>Run a particular test via make<a class="headerlink" href="#run-a-particular-test-via-make" title="Link to this heading"></a></h2>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>&gt;<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>to<span class="w"> </span>mfix-build-dir
+&gt;<span class="w"> </span>make<span class="w"> </span>run_DEM01-x<span class="w">  </span><span class="c1"># running &quot;DEM01-x&quot; and output to the screen</span>
+</pre></div>
+</div>
+</section>
+<section id="run-specific">
+<h2>Run specific<a class="headerlink" href="#run-specific" title="Link to this heading"></a></h2>
+<p>If the environment variable GRID is defined, it specifies which grid
+types to run for the test(s). If GRID variable is not defined, the
+default is to run the tests for all grid types. &gt; env GRID=”tiled” ctest
+-R DEM01 # running all tests with “DEM01” for tiled grid &gt; env
+GRID=”single multiple” ctest -R DEM01 # running all tests with “DEM01”
+for single grid and multiple grid &gt; ctest -R DEM01 # running all tests
+with “DEM01” for all grid types (single, multiple, tiled)</p>
+</section>
+<section id="run-a-user-defined-case">
+<h2>Run a user-defined case<a class="headerlink" href="#run-a-user-defined-case" title="Link to this heading"></a></h2>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>&gt;<span class="w"> </span>./mfix<span class="w"> </span>inputs-myrun
+</pre></div>
+</div>
+<p><em>inputs-myrun</em> is a text file containing the AMReX input parameters;
+this can be named anything as long as it is the <strong>first</strong> argument
+following the executable. Note that many of the problem parameters are
+still defined in <em>mfix.dat</em>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Debugging.html" class="btn btn-neutral float-left" title="Debugging" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="RegressionTesting.html" class="btn btn-neutral float-right" title="Regression testing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2017-2018, MFIX-Exa Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

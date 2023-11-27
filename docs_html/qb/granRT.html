@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Granular Rayleigh-Taylor &mdash; MFIX-Exa  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Mehrdad’s Bed" href="mehrdadsbed.html" />
+    <link rel="prev" title="Clustering in the HCS" href="hcs.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            MFIX-Exa
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User guide:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GettingStarted_Chapter.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Inputs_Chapter.html">Run-time Inputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ManagingGridHierarchy_Chapter.html">Gridding and Load Balancing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Fluids_Chapter.html">Solving the Fluid Equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Particles_Chapter.html">Particles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../EB_Chapter.html">Embedded Boundaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Debugging.html">Debugging</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tests and Benchmarks:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../RunningTestSuite.html">Running the MFIX-Exa Test Suite</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../RegressionTesting.html">Regression testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CITests.html">Continuous Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../NightlyTests.html">Nightly Tests</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Qualitative Benchmarks</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="hcs.html">Clustering in the HCS</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Granular Rayleigh-Taylor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mehrdadsbed.html">Mehrdad’s Bed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="single_bubble.html">Single Bubble Injection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="biseg.html">Bidisperse Segregation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="refs.html">References</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">MFIX-Exa</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Qualitative Benchmarks</a></li>
+      <li class="breadcrumb-item active">Granular Rayleigh-Taylor</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/qb/granRT.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="granular-rayleigh-taylor">
+<span id="chap-qb-granrt"></span><h1>Granular Rayleigh-Taylor<a class="headerlink" href="#granular-rayleigh-taylor" title="Link to this heading"></a></h1>
+<p>The Rayleigh-Taylor (RT) instability, along with the Kelvin-Helmholtz
+instability, is among the most well-known and fundamental of all multi-phase
+flow instabilities <a class="reference internal" href="refs.html#c81" id="id1"><span>[C81]</span></a>. The prototypical case involves two (traditional)
+fluids at rest of differing densities with the heavier fluid being accelerated
+into the lighter fluid. The instability manifests itself in a deformation of
+the interface between the two fluids. The initial deformation grows into an
+interpenetrating fingering pattern, commonly producing a mushroom cloud
+pattern, before giving way to micro-scale mixing or bubble-droplet formation
+if the fluids are immiscible.</p>
+<p>Vinningland and coworkers <a class="reference internal" href="refs.html#vjftm07" id="id2"><span>[VJFTM07]</span></a> devised a granular analogue of the classic
+problem in which the heavier “fluid” is an assembly of particles penetrating
+into a gas, in this case air. The particle assembly is generated by settling
+under gravity into a random close packed array in a Hele-Shaw cell
+(rectangular enclosure) which is quickly inverted around a pivot to bring the
+heavier particle phase above the lighter gas phase. The instability evolution
+is distinct from the classic fluid-fluid RT, which is described by
+Vinningland et al. <a class="reference internal" href="refs.html#vjftm07" id="id3"><span>[VJFTM07]</span></a>:</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">The initially flat front defined by the grains subsequently develops</div>
+<div class="line">into a pattern of falling granular fingers separated by rising bubbles</div>
+<div class="line">of air. A transient coarsening of the front is observed right from the</div>
+<div class="line">start by a finger merging process. The coarsening is later stabilized</div>
+<div class="line">by new fingers growing from the center of the rising bubbles.</div>
+</div>
+</div></blockquote>
+<p>The granular-RT is simulated with MFIX-Exa 19.08 with the following setup.
+The domain is 56 mm wide by 68 mm tall and 1 mm deep which is discretized
+by a uniform mesh of <span class="math notranslate nohighlight">\(224 \times 272 \times 4\)</span> CFD cells. No-slip walls
+are applied at top, bottom, left and right domain extents.
+The front and back walls are “removed” and treated as periodic in the
+simulation as the depth is only resolved by four CFD cells.
+No additional geometry definition is required.
+The particles are assumed monodisperse with a constant diameter of
+<span class="math notranslate nohighlight">\(d_p = 140\)</span> microns (<span class="math notranslate nohighlight">\(dx^* \approx 1.8\)</span>) and density of
+<span class="math notranslate nohighlight">\(\rho_p = 1050\)</span> kg/m<sup>3</sup> . The resitution and sliding friction
+coefficients are set to 0.9 and 0.25, which are believed to be representative
+of the polystyrene material. The <code class="code highlight cpp c++ docutils literal highlight-c++"><span class="n">WenYu</span></code> drag law of Wen and Yu drag
+<a class="reference internal" href="refs.html#wy66" id="id4"><span>[WY66]</span></a> is applied. 1.12M particles are initially randomly distributed
+throughout the domain. The gravity force on the particles is modified by
+<span class="math notranslate nohighlight">\(\tanh 100(t - 2)\)</span> so that the particles initially settle upwards,
+and then the body force is quickly inverted around <span class="math notranslate nohighlight">\(t = 2\)</span> s,
+causing the particles to fall downward into the quiescent air.</p>
+<figure class="align-center" id="id6">
+<a class="reference internal image-reference" href="../_images/granRT_1908_small.png"><img alt="Sim comparison to granular Rayleigh-Taylor experiment" src="../_images/granRT_1908_small.png" style="width: 16cm;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Progression of the granular Rayleigh-Taylor instability in the experiments
+of Vinningland et al. <a class="reference internal" href="refs.html#vjftm07" id="id5"><span>[VJFTM07]</span></a> (top row)
+compared to the MFIX-Exa result (bottom row).</span><a class="headerlink" href="#id6" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>The figure above shows the progression of an MFIX-Exa 19.08 simulation compared
+to the experimental results. There is a good match between the experimental and
+numerical results for roughly the first half of the transien: an initially flat
+interface gives way to many fingers falling into the gas which merge and form
+a semi-stable bubble pattern. However, the simulated bubbles appear to be less
+stable than those in the lab, which rise uniformily to the surface. However, in
+the simulations the center bubble rises slightly faster than the one on the
+left, which shifts more weight over the left-hand bubble, which further impedes
+its rise and eventually “squishes” the left-hand bubble into the center bubble
+as it breaks the surface. Later, the right hand bubble also merges with (what
+remains of) the center bubble, allowing a path of least resistance for its air
+to escape without rupturing on the surface on its own. The bubble merging
+significantly accelerates the second half of the transient (notice the
+different times between experiment and simulation). Several different
+variations of this setup were performed: different drag laws, slower inversion
+time, different combinations of particle restitution and friction coefficients,
+inclusion of front and back walls. Although all tests were slightly different,
+none were able to match the stability of the later time bubble pattern observed
+experimentally.</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="hcs.html" class="btn btn-neutral float-left" title="Clustering in the HCS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="mehrdadsbed.html" class="btn btn-neutral float-right" title="Mehrdad’s Bed" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2017-2018, MFIX-Exa Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

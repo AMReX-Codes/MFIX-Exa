@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome to MFIX-Exa’s documentation! &mdash; MFIX-Exa  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Introduction" href="Introduction.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="#" class="icon icon-home">
+            MFIX-Exa
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User guide:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GettingStarted_Chapter.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Inputs_Chapter.html">Run-time Inputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ManagingGridHierarchy_Chapter.html">Gridding and Load Balancing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Fluids_Chapter.html">Solving the Fluid Equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Particles_Chapter.html">Particles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EB_Chapter.html">Embedded Boundaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Debugging.html">Debugging</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tests and Benchmarks:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="RunningTestSuite.html">Running the MFIX-Exa Test Suite</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RegressionTesting.html">Regression testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CITests.html">Continuous Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NightlyTests.html">Nightly Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qb/index.html">Qualitative Benchmarks</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">MFIX-Exa</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Welcome to MFIX-Exa’s documentation!</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This documentation is a work in progress.
+It is reasonably complete and hopefully useful
+but is likely error prone and in places misleading.
+Please report any errors to the
+<a class="reference external" href="https://mfix.netl.doe.gov/forum/c/mfix-exa">MFIX-Exa User Forum</a>.</p>
+</div>
+<section id="welcome-to-mfix-exa-s-documentation">
+<h1>Welcome to MFIX-Exa’s documentation!<a class="headerlink" href="#welcome-to-mfix-exa-s-documentation" title="Link to this heading"></a></h1>
+<p>MFIX-Exa is a new multiphase computational fluid dynamics (CFD) modeling tool
+that can take advantage of massively parallel high performance computers (HPC)
+with the goal of scaling well at exascale.  It combines the underlying physics
+from the existing <a class="reference external" href="https://mfix.netl.doe.gov/">MFIX</a> code with the
+<a class="reference external" href="https://amrex-codes.github.io/amrex/">AMReX</a> framework, creating the next
+generation, high performance, multiphase CFD workhorse.</p>
+<img alt="_images/particle_banner.png" src="_images/particle_banner.png" />
+<p>MFIX-Exa is under active development as part of the MFIX-Exa
+application project in DOE’s
+<a class="reference external" href="https://www.exascaleproject.org/">Exascale Computing Project (ECP)</a>. All of
+MFIX-Exa’s development is done in the
+<a class="reference external" href="https://mfix.netl.doe.gov/gitlab/exa/mfix">NETL gitlab repository</a>, with
+active development in the develop branch. Changes are merged into
+the master branch at the beginning of each month.</p>
+<p>When mature, this project will provide a modern multi-level multi-grid fluid
+solver with chemistry, heat transfer, complex geometry, and two particle models:</p>
+<ol class="arabic simple">
+<li><p><strong>Discrete particle method (DEM)</strong> - Each particle is modeled as a sphere,
+resolving all particle collisions</p></li>
+<li><p><strong>Particle in cell method (PIC)</strong> - Particles are group in parcels and see
+other parcels through a stress gradient.</p></li>
+</ol>
+<p>To get started with MFIX-Exa, follow the user guide sections:</p>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">User guide:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GettingStarted_Chapter.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Inputs_Chapter.html">Run-time Inputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ManagingGridHierarchy_Chapter.html">Gridding and Load Balancing</a></li>
+</ul>
+</div>
+<p>To learn more about the implementation, follow the following reference sections:</p>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Reference:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Fluids_Chapter.html">Solving the Fluid Equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Particles_Chapter.html">Particles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EB_Chapter.html">Embedded Boundaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Debugging.html">Debugging</a></li>
+</ul>
+</div>
+<p>The following section detail the testing and benchmarks used to ensure solutions
+and performance:</p>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Tests and Benchmarks:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="RunningTestSuite.html">Running the MFIX-Exa Test Suite</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RegressionTesting.html">Regression testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CITests.html">Continuous Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NightlyTests.html">Nightly Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qb/index.html">Qualitative Benchmarks</a></li>
+</ul>
+</div>
+<section id="notice">
+<h2>Notice<a class="headerlink" href="#notice" title="Link to this heading"></a></h2>
+<p>Neither the United States Government nor any agency thereof, nor any of
+their employees, makes any warranty, expressed or implied, or assumes
+any legal liability or responsibility for the accuracy, completeness, or
+usefulness of any information, apparatus, product, or process disclosed
+or represents that its use would not infringe privately owned rights.</p>
+<ul class="simple">
+<li><p>MFIX-Exa is provided without any user support for applications in the
+user’s immediate organization. It should not be redistributed in
+whole or in part.</p></li>
+<li><p>The use of MFIX-Exa is to be acknowledged in any published paper based on
+computations using this software by citing this MFIX-Exa site.</p></li>
+<li><p>The authors would appreciate receiving any reports of bugs or other
+difficulties with the software, enhancements to the software, and
+accounts of practical applications of this software.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Introduction.html" class="btn btn-neutral float-right" title="Introduction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2017-2018, MFIX-Exa Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

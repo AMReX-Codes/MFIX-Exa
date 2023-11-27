@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Particles on GPUs &mdash; MFIX-Exa  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Embedded Boundaries" href="../EB_Chapter.html" />
+    <link rel="prev" title="Particle/Wall Interactions" href="ParticleWalls.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            MFIX-Exa
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User guide:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GettingStarted_Chapter.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Inputs_Chapter.html">Run-time Inputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ManagingGridHierarchy_Chapter.html">Gridding and Load Balancing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Fluids_Chapter.html">Solving the Fluid Equations</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../Particles_Chapter.html">Particles</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="ParticleBasics.html">Particle Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ParticleFluid.html">Particle/Fluid Interactions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ParticleWalls.html">Particle/Wall Interactions</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Particles on GPUs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../EB_Chapter.html">Embedded Boundaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Debugging.html">Debugging</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tests and Benchmarks:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../RunningTestSuite.html">Running the MFIX-Exa Test Suite</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../RegressionTesting.html">Regression testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CITests.html">Continuous Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../NightlyTests.html">Nightly Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../qb/index.html">Qualitative Benchmarks</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">MFIX-Exa</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../Particles_Chapter.html">Particles</a></li>
+      <li class="breadcrumb-item active">Particles on GPUs</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/particles/ParticlesOnGpus.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="particles-on-gpus">
+<h1>Particles on GPUs<a class="headerlink" href="#particles-on-gpus" title="Link to this heading"></a></h1>
+<p>The particle kernels are compute-intensive and can in principle be processed asynchronously with parts of the fluid advance.
+The core components of the particle method in MFIX-Exa are:</p>
+<ul class="simple">
+<li><p>Neighbor List Construction</p></li>
+<li><p>Particle-Particle Collisions</p></li>
+<li><p>Particle-Wall Collisions</p></li>
+</ul>
+<p>Of these operations, the neighbor list construction requires the most care.
+A neighbor list is a pre-computed list of all the neighbors a given particle can interact with over the next <em>n</em> timesteps.
+Neighbor lists are usually constructed by binning the particles by an interaction distance,
+and then performing the N<sup>2</sup> distance check only on the particles in neighboring bins. In detail, the CPU version of the neighbor list algorithm is as follows:</p>
+<ul class="simple">
+<li><p>For each tile on each level, loop over the particles, identifying the bin it belongs to.</p></li>
+<li><p>Add the particle to a linked-list for the cell that <cite>owns</cite> it.</p></li>
+<li><p>For each cell, loop over all the particles, and then loop over all potential collisions partners in the neighboring cells.</p></li>
+<li><p>If a collision partner is close enough, add it to that particle’s neighbor list.</p></li>
+</ul>
+<p>To port this algorithm to the GPU, we use the parallel algorithms library Thrust, distributed as part of the CUDA Toolkit. Thrust provides parallel sorting, searching, and prefix summing algorithms that are particularly useful in porting particle algorithms. To construct the neighbor list on the GPU, we follow the basic approach used by Canaba, a product of the Particle Co-Design Center:</p>
+<ul class="simple">
+<li><p>Sort the particles on each grid by bin, using a parallel counting sort. We use Thrust’s <cite>exclusive_scan</cite> function to implement the prefix sum phase of the sort, and hand-coded kernels for the rest. This step does not actually involving rearranging the particle data - rather, we compute a permutation that would put the particles in order without actually reordering them.</p></li>
+<li><p>Once the particles are sorted by bin, we can loop over the particles in neighboring bins. We make two passes over the particles. First, we launch a kernel to count the number of collision partners for each particle.</p></li>
+<li><p>Then, we sum these numbers and allocate space for our neighbor list.</p></li>
+<li><p>Finally, we make a another pass over the particles, putting them into to list at the appropriate place.</p></li>
+</ul>
+<p>Note that we build a emph{full} neighbor list, meaning that if particle $i$ appears in particle $j$’s list, then particle $j$ also appears in particle $i$’s list. This simplifies the force-computation step when using these lists, since the forces and torques for a given particle can be updated without atomics.</p>
+<p>The final on-grid neighbor list data structure consists of two arrays. First, we have the neighbor list itself, stored as a big, 1D array of particle indices. Then, we have an <cite>offsets</cite> array that stores, for each particle, where in the neighbor list array to look. The details of this data structure have been hidden inside an iterator, so that user code can look like:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// now we loop over the neighbor list and compute the forces</span>
+<span class="w"> </span><span class="n">AMREX_FOR_1D</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">np</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">,</span>
+<span class="w"> </span><span class="p">{</span>
+<span class="w">     </span><span class="n">ParticleType</span><span class="o">&amp;</span><span class="w"> </span><span class="n">p1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pstruct</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+<span class="w">     </span><span class="n">p1</span><span class="p">.</span><span class="n">rdata</span><span class="p">(</span><span class="n">PIdx</span><span class="o">::</span><span class="n">ax</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
+<span class="w">     </span><span class="n">p1</span><span class="p">.</span><span class="n">rdata</span><span class="p">(</span><span class="n">PIdx</span><span class="o">::</span><span class="n">ay</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
+<span class="w">     </span><span class="n">p1</span><span class="p">.</span><span class="n">rdata</span><span class="p">(</span><span class="n">PIdx</span><span class="o">::</span><span class="n">az</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
+
+<span class="w">     </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">p2</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">nbor_data</span><span class="p">.</span><span class="n">getNeighbors</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+<span class="w">     </span><span class="p">{</span>
+<span class="w">         </span><span class="n">Real</span><span class="w"> </span><span class="n">dx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p1</span><span class="p">.</span><span class="n">pos</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">p2</span><span class="p">.</span><span class="n">pos</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="w">         </span><span class="n">Real</span><span class="w"> </span><span class="n">dy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p1</span><span class="p">.</span><span class="n">pos</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">p2</span><span class="p">.</span><span class="n">pos</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">         </span><span class="n">Real</span><span class="w"> </span><span class="n">dz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p1</span><span class="p">.</span><span class="n">pos</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">p2</span><span class="p">.</span><span class="n">pos</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+
+<span class="w">         </span><span class="p">...</span>
+<span class="w">     </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Note that, because of our use of managed memory to store the particle data and the neighbor list, the above code will work when compiled for either CPU or GPU.</p>
+<p>The above algorithm deals with constructing a neighbor list for the particles on a single grid.
+When domain decomposition is used, one must also make copies of particles on adjacent grids,
+potentially performing the necessary MPI communication for grids associated with other processes.
+The routines <cite>fillNeighbors</cite>, which computes which particles needed to be ghosted to which grid, and <cite>updateNeighbors</cite>,
+which copies up-to-date data for particles that have already been ghosted, have also been offloaded to the GPU,
+using techniques similar to AMReX’s <cite>Redistribute</cite> routine.</p>
+<p>Note that when the particles are dense, only a small portion of the ghost particles are neighbors to the particles
+inside the grids. AMReX provides a function <cite>selectActualNeighbors</cite> to filter out the ghost particles that will
+not be used for building the neighbor list. So the subsequent calls to <cite>updateNeighbors</cite> can avoid transferring
+these unused ghost particles, which significantly reduces the communication cost in some tests.
+To use this optimization, set <cite>particles.reduceGhostParticles</cite> to <code class="code highlight cpp c++ docutils literal highlight-c++"><span class="nb">true</span></code> in MFIX-Exa’s inputs.</p>
+<p>Once the neighbor list has been constructed, collisions with both particles and walls can easily be processed.</p>
+<p>MFIX-Exa currently runs on both CPU-only and hybrid CPU/GPU architectures.</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ParticleWalls.html" class="btn btn-neutral float-left" title="Particle/Wall Interactions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../EB_Chapter.html" class="btn btn-neutral float-right" title="Embedded Boundaries" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2017-2018, MFIX-Exa Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

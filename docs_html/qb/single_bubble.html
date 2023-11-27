@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Single Bubble Injection &mdash; MFIX-Exa  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Bidisperse Segregation" href="biseg.html" />
+    <link rel="prev" title="Mehrdad’s Bed" href="mehrdadsbed.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            MFIX-Exa
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User guide:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GettingStarted_Chapter.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Inputs_Chapter.html">Run-time Inputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ManagingGridHierarchy_Chapter.html">Gridding and Load Balancing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Fluids_Chapter.html">Solving the Fluid Equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Particles_Chapter.html">Particles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../EB_Chapter.html">Embedded Boundaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Debugging.html">Debugging</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tests and Benchmarks:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../RunningTestSuite.html">Running the MFIX-Exa Test Suite</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../RegressionTesting.html">Regression testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CITests.html">Continuous Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../NightlyTests.html">Nightly Tests</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Qualitative Benchmarks</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="hcs.html">Clustering in the HCS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="granRT.html">Granular Rayleigh-Taylor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mehrdadsbed.html">Mehrdad’s Bed</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Single Bubble Injection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="biseg.html">Bidisperse Segregation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="refs.html">References</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">MFIX-Exa</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Qualitative Benchmarks</a></li>
+      <li class="breadcrumb-item active">Single Bubble Injection</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/qb/single_bubble.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="single-bubble-injection">
+<span id="chap-qb-singbub"></span><h1>Single Bubble Injection<a class="headerlink" href="#single-bubble-injection" title="Link to this heading"></a></h1>
+<p>Another variation on bubbling typically observed in bubbling fluidized beds
+is the detailed single-bubble study of Boyce and coworkers <a class="reference internal" href="refs.html#bplpm19" id="id1"><span>[BPLPM19]</span></a>. In the
+experiment, a cylinderical bed is brought to incipient fluidization
+(just <em>under</em> minimum fluidization) by a uniform disributor. Then, an
+additional volume of gas is abruptly injected from a nozzle located in the
+center of the bed causing a single bubble to form and rise through the bed.
+Measurement of the evolution of the bubble formation, rise and
+is captured with high-speed, high-resolution magnetic resonance imaging (MRI)
+in a 10 mm thick slice through the center of the bed. Two particle types
+are studied experimentally, only the larger of which is currently used
+for qualitative benchmarking.</p>
+<p>The experimental test section is a cylinderical bed 190 mm in diameter and
+300 mm tall. The system is modeled in a domain of size 192 mm square by 384 mm
+tall with a cylinderical EB geometry centered at <span class="math notranslate nohighlight">\((x,z) = (96, 96)\)</span> mm.
+The modeled bed height is larger than the experimentso that it can be resolved
+by a uniform uniform CFD grid of power 2. Specifically, the applied grid is
+<span class="math notranslate nohighlight">\(32 \times 64 \times 32\)</span>, such that <span class="math notranslate nohighlight">\(dx^* \approx 2.0\)</span>.
+<span class="math notranslate nohighlight">\(N_p = 260\)</span>-thousand particles make up a bed of approximately
+<span class="math notranslate nohighlight">\(h_{bed} = 200\)</span> static bed height. The particles are of diameter
+<span class="math notranslate nohighlight">\(d_p = 2.93\)</span> mm and density
+<span class="math notranslate nohighlight">\(\rho_p = 1040\)</span> kg/m<sup>3</sup> , respectively. Mass inlet and pressure
+outlet boundary conditions are specified at the bottom and top of the domain,
+respectively. The nozzle is modeled with a secondary mass inlet covering the
+center (in x,z) four CFD cells. We note that, as modeled, the area of the
+injector is roughly three times that of the experimental nozzle, a tube of
+<span class="math notranslate nohighlight">\(7.95\)</span> mm diameter. The injection times are adjusted slightly to
+<span class="math notranslate nohighlight">\(\delta t_{inj} = 154.2\)</span>, <span class="math notranslate nohighlight">\(101.7\)</span>, <span class="math notranslate nohighlight">\(66.7\)</span>, <span class="math notranslate nohighlight">\(51.4\)</span>,
+and <span class="math notranslate nohighlight">\(25.0\)</span> ms so that a uniform jet velocity of <span class="math notranslate nohighlight">\(50\)</span> m/s can be
+applied in all cases.</p>
+<p>A separate defluidization simulation was first carried out first to determine
+<span class="math notranslate nohighlight">\(U_{mf} \approx 0.66\)</span> m/s using the <code class="code highlight cpp c++ docutils literal highlight-c++"><span class="n">WenYu</span></code> <a class="reference internal" href="refs.html#wy66" id="id2"><span>[WY66]</span></a> drag law, slightly
+below the experimentally measured value of <span class="math notranslate nohighlight">\(U_{mf} = 0.7\)</span> m/s. The bed
+was prepared with two initialization simulations. First, the particle initial
+condition is fluidized above <span class="math notranslate nohighlight">\(U_{mf}\)</span> at <span class="math notranslate nohighlight">\(0.8\)</span> m/s for one second
+using both the uniform distributor and jet sections. Then, the jet section is
+shut off (velocity in BC set to zero) and the flow in the uniform distributor
+section is reduced to incipient fluidization at <span class="math notranslate nohighlight">\(0.66\)</span> m/s for an
+additional two seconds. Then, beginning at <span class="math notranslate nohighlight">\(t = 3\)</span> s, the jet region is
+set to <span class="math notranslate nohighlight">\(50\)</span> m/s for a specified injection duration given previously.
+The jet is switched on and off with a step change in <cite>usr1.f90</cite>.</p>
+<figure class="align-center" id="id3">
+<a class="reference internal image-reference" href="../_images/boyce_sb_1908_small.png"><img alt="Sim comparison to single bubble injection experiment of Boyce" src="../_images/boyce_sb_1908_small.png" style="width: 16cm;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Comparison of experiment and MFIX-Exa simulaton for single bubbles
+injected into incipiently fluidized beds for increasing (left to right)
+injection times.</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>The figure above provides a comparison between MFIX-Exa <cite>19.08</cite> simulation
+results and the experimental measurements. In both cases, the particle data
+has been averaged onto a <span class="math notranslate nohighlight">\(10\)</span> mm thick grid of <span class="math notranslate nohighlight">\(21 \times 32\)</span>
+For the longer injection times, <span class="math notranslate nohighlight">\(\delta t_{inj} \approx 100\)</span> and
+<span class="math notranslate nohighlight">\(150\)</span> ms, the simulated bubbles are larger and more elongated than
+observed experimentally. However, this trend is not universal, at shorter
+injection times, the bubble is too small and actually collapses before
+erupting at the surface. Above, the bubble produced from a <span class="math notranslate nohighlight">\(50\)</span> ms
+injection is currently in the process of collapsing. Another interesting
+feature (perhaps most apparent at <span class="math notranslate nohighlight">\(66\)</span> ms), is the V-shaped region
+of particle down flow centered around the bubble centeroid, which appears
+to be captured rather well by the simulation.</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="mehrdadsbed.html" class="btn btn-neutral float-left" title="Mehrdad’s Bed" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="biseg.html" class="btn btn-neutral float-right" title="Bidisperse Segregation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2017-2018, MFIX-Exa Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
