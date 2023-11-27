@@ -17,6 +17,9 @@ The following inputs must be preceded by "mfix."
 +---------------------------------+-----------------------------------------------------------------------+-------------+--------------+
 | redistribute_nodal_proj         | Redistribute the velocity field after the nodal projection            |   Bool      |  False       |
 +---------------------------------+-----------------------------------------------------------------------+-------------+--------------+
+| redistribute_after_initial\     | Call initial redistribution of all fields after the initial nodal     |   Bool      |  True        |
+| _nodal_proj                     | projection                                                            |             |              |
++---------------------------------+-----------------------------------------------------------------------+-------------+--------------+
 | use_drag_coeff_in_proj_gp       | Algebraically consistent p coeff in proj or (default) simplified form |   Bool      |  False       |
 +---------------------------------+-----------------------------------------------------------------------+-------------+--------------+
 | use_drag_in_godunov             | Include a drag term in the Godunov flux or (default) not              |   Bool      |  False       |
