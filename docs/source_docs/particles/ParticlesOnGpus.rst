@@ -28,7 +28,7 @@ To port this algorithm to the GPU, we use the parallel algorithms library Thrust
 - Then, we sum these numbers and allocate space for our neighbor list.
 - Finally, we make a another pass over the particles, putting them into to list at the appropriate place.
 
-Note that we build a \emph{full} neighbor list, meaning that if particle $i$ appears in particle $j$'s list, then particle $j$ also appears in particle $i$'s list. This simplifies the force-computation step when using these lists, since the forces and torques for a given particle can be updated without atomics.
+Note that we build a full neighbor list, meaning that if particle `i` appears in particle `j`'s list, then particle `j` also appears in particle `i`'s list. This simplifies the force-computation step when using these lists, since the forces and torques for a given particle can be updated without atomics.
 
 The final on-grid neighbor list data structure consists of two arrays. First, we have the neighbor list itself, stored as a big, 1D array of particle indices. Then, we have an `offsets` array that stores, for each particle, where in the neighbor list array to look. The details of this data structure have been hidden inside an iterator, so that user code can look like:
 
